@@ -140,11 +140,11 @@ const HeroSection = () => {
             </p>
 
             {/* CTA Button */}
-            <div className="w-full flex justify-center md:justify-end items-center mt-6 md:mt-4">
+            <div className="w-full flex justify-start md:justify-end items-center mt-6 md:mt-4">
               <a 
                 href="tel:+918111830647" 
                 ref={ctaRef} 
-                className="cssbuttons-io-button -translate-y-8 md:-translate-y-16"
+                className="cssbuttons-io-button md:-translate-y-16"
               >
                 Let's talk
                 <div className="icon">
