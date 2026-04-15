@@ -20,13 +20,22 @@ const HeroSection = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+      const targets = [".hero-heading-line", subTextRef.current, imageRef.current, ctaRef.current, desktopSocialRef.current];
 
-      tl.from([".hero-heading-line", subTextRef.current, imageRef.current, ctaRef.current, desktopSocialRef.current], { 
+      // Initial deterministic state prior to animation to avoid flashes and layout shifts
+      gsap.set(targets, { 
         y: 60,
-        opacity: 0, 
+        opacity: 0,
+        visibility: "hidden"
+      });
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+      tl.to(targets, { 
+        y: 0,
+        autoAlpha: 1, 
         duration: 1.2,
-        ease: "power3.out"
+        ease: "power3.out",
+        clearProps: "transform,opacity,visibility" // Target specific props so we don't wipe out the inline WebkitTextStroke styles!
       });
     }, containerRef);
 
@@ -95,12 +104,14 @@ const HeroSection = () => {
           </div>
 
           {/* Image */}
-          <div ref={imageRef} className="absolute left-1/2 -translate-x-[15%] md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] flex items-end justify-center md:justify-start pointer-events-none">
-            <img
-              src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
-              alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
-              className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.65] md:scale-100"
-            />
+          <div className="absolute left-1/2 -translate-x-[25%] md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] flex items-end justify-center md:justify-start pointer-events-none">
+            <div ref={imageRef} className="h-full w-auto">
+              <img
+                src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
+                alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
+                className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.65] md:scale-100"
+              />
+            </div>
           </div>
 
           <div
@@ -141,19 +152,20 @@ const HeroSection = () => {
 
             {/* CTA Button */}
             <div className="w-full flex justify-start md:justify-end items-center mt-6 md:mt-4">
-              <a 
-                href="tel:+918111830647" 
-                ref={ctaRef} 
-                className="cssbuttons-io-button md:-translate-y-16"
-              >
-                Let's talk
-                <div className="icon">
-                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
-                  </svg>
-                </div>
-              </a>
+              <div ref={ctaRef}>
+                <a 
+                  href="tel:+918111830647" 
+                  className="cssbuttons-io-button md:-translate-y-16"
+                >
+                  Let's talk
+                  <div className="icon">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
             </div>
 
           </div>
