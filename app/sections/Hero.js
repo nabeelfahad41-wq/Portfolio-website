@@ -63,7 +63,7 @@ const HeroSection = () => {
       />
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-4 sm:px-8 mt-[40px]">
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-4 sm:px-8 mt-0 md:mt-[40px]">
 
         {/* Desktop Social Icons (Top Right) */}
         <div ref={desktopSocialRef} className="hidden md:flex absolute top-0 right-8 z-50">
@@ -95,7 +95,7 @@ const HeroSection = () => {
           </div>
 
           {/* Image */}
-          <div ref={imageRef} className="absolute left-1/2 -translate-x-1/2 md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] flex items-end justify-center md:justify-start pointer-events-none">
+          <div ref={imageRef} className="absolute left-1/2 -translate-x-[15%] md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] flex items-end justify-center md:justify-start pointer-events-none">
             <img
               src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
               alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
@@ -131,7 +131,7 @@ const HeroSection = () => {
         </div>
 
         {/* Paragraph & CTA */}
-        <div className="relative z-30 w-full flex flex-col items-center px-4 md:px-[5%] lg:px-[10%] mt-8 md:-mt-8 lg:-mt-14">
+        <div className="relative z-30 w-full flex flex-col items-center px-4 md:px-[5%] lg:px-[10%] -mt-4 md:-mt-8 lg:-mt-14">
           <div className="flex flex-col items-center md:items-end w-full max-w-4xl">
 
             <p ref={subTextRef} className="text-[#d3d0cb] text-[0.95rem] md:text-lg lg:text-xl lg:text-[1.35rem] leading-relaxed xl:leading-loose text-center font-light w-full">

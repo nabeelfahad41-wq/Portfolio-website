@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const PHONE = "918111830647";
 const PRE_FILLED = "Hi Nabeel! I visited your website and I'm interested in your digital marketing services. Can we connect?";
@@ -18,10 +19,32 @@ const CHAT_HISTORY = [
 ];
 
 export default function WhatsAppChat() {
+    const pathname = usePathname();
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState(PRE_FILLED);
     const [pulse, setPulse] = useState(true);
+    const [showOnMobile, setShowOnMobile] = useState(true);
     const inputRef = useRef(null);
+
+    // Scroll visibility logic for Home Page hero section
+    useEffect(() => {
+        const handleScroll = () => {
+            if (pathname === '/' && window.innerWidth < 768) {
+                setShowOnMobile(window.scrollY > 300);
+            } else {
+                setShowOnMobile(true);
+            }
+        };
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleScroll);
+        };
+    }, [pathname]);
 
     // Stop the initial attention pulse after 4 seconds
     useEffect(() => {
@@ -73,7 +96,7 @@ export default function WhatsAppChat() {
             <button
                 onClick={() => setOpen((o) => !o)}
                 aria-label="Open WhatsApp Chat"
-                className={`fixed bottom-6 right-6 z-[999] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none ${pulse && !open ? "wa-fab-pulse" : ""} ${open ? "w-14 h-14 md:w-16 md:h-16 rounded-full" : "rounded-full p-1.5 pr-5 md:pr-6"}`}
+                className={`fixed bottom-6 right-6 z-[999] flex items-center justify-center transition-all duration-500 hover:scale-105 active:scale-95 focus:outline-none ${pulse && !open ? "wa-fab-pulse" : ""} ${open ? "w-14 h-14 md:w-16 md:h-16 rounded-full" : "rounded-full p-1.5 pr-5 md:pr-6"} ${!showOnMobile ? "opacity-0 translate-y-10 pointer-events-none" : "opacity-100 translate-y-0"}`}
                 style={{ background: open ? "#128C7E" : "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 12px 40px rgba(37,211,102,0.35)" }}
             >
                 {open ? (
