@@ -73,28 +73,33 @@ export default function WhatsAppChat() {
             <button
                 onClick={() => setOpen((o) => !o)}
                 aria-label="Open WhatsApp Chat"
-                className={`fixed bottom-6 right-6 z-[999] w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none ${pulse ? "wa-fab-pulse" : ""}`}
-                style={{ background: "#25D366", boxShadow: "0 8px 32px rgba(37,211,102,0.4)" }}
+                className={`fixed bottom-6 right-6 z-[999] flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none ${pulse && !open ? "wa-fab-pulse" : ""} ${open ? "w-14 h-14 md:w-16 md:h-16 rounded-full" : "rounded-full p-1.5 pr-5 md:pr-6"}`}
+                style={{ background: open ? "#128C7E" : "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 12px 40px rgba(37,211,102,0.35)" }}
             >
                 {open ? (
                     /* Close X */
-                    <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7">
-                        <path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+                    <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 ) : (
-                    /* WhatsApp icon */
-                    <svg viewBox="0 0 32 32" fill="white" className="w-9 h-9">
-                        <path d="M16 2.933C8.8 2.933 2.933 8.8 2.933 16c0 2.32.627 4.493 1.72 6.373L2.667 29.333l7.187-1.96A13.01 13.01 0 0016 29.067c7.2 0 13.067-5.867 13.067-13.067S23.2 2.933 16 2.933zm6.64 18.507c-.267.747-1.587 1.44-2.173 1.493-.56.053-1.093.253-3.68-.747-3.107-1.173-5.107-4.373-5.253-4.573-.147-.2-1.2-1.6-1.2-3.04s.76-2.16 1.027-2.453c.267-.293.587-.36.787-.36l.573.013c.24.013.493.027.733.573.293.68.933 2.293.933 2.453.013.16 0 .347-.107.507-.107.173-.16.267-.32.427-.16.173-.32.333-.467.493-.147.147-.307.307-.133.6.173.293.787 1.293 1.693 2.093 1.16 1.04 2.133 1.36 2.44 1.52.307.147.48.12.653-.08.173-.2.747-.893.947-1.2.2-.307.4-.253.667-.147l2.133.987c.28.133.48.213.56.333.08.107.08.627-.187 1.373z" />
-                    </svg>
+                    <div className="flex items-center gap-3">
+                        <div className="bg-white/20 p-2 md:p-2.5 rounded-full relative">
+                            {/* WhatsApp icon */}
+                            <svg viewBox="0 0 32 32" fill="white" className="w-7 h-7 md:w-8 md:h-8 drop-shadow-md">
+                                <path d="M16 2.933C8.8 2.933 2.933 8.8 2.933 16c0 2.32.627 4.493 1.72 6.373L2.667 29.333l7.187-1.96A13.01 13.01 0 0016 29.067c7.2 0 13.067-5.867 13.067-13.067S23.2 2.933 16 2.933zm6.64 18.507c-.267.747-1.587 1.44-2.173 1.493-.56.053-1.093.253-3.68-.747-3.107-1.173-5.107-4.373-5.253-4.573-.147-.2-1.2-1.6-1.2-3.04s.76-2.16 1.027-2.453c.267-.293.587-.36.787-.36l.573.013c.24.013.493.027.733.573.293.68.933 2.293.933 2.453.013.16 0 .347-.107.507-.107.173-.16.267-.32.427-.16.173-.32.333-.467.493-.147.147-.307.307-.133.6.173.293.787 1.293 1.693 2.093 1.16 1.04 2.133 1.36 2.44 1.52.307.147.48.12.653-.08.173-.2.747-.893.947-1.2.2-.307.4-.253.667-.147l2.133.987c.28.133.48.213.56.333.08.107.08.627-.187 1.373z" />
+                            </svg>
+                            {/* Notification badge */}
+                            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] md:text-xs font-bold w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-[#22c55e]">
+                                1
+                            </span>
+                        </div>
+                        <div className="flex flex-col items-start leading-[1.2] text-left">
+                            <span className="text-white/90 text-[10px] md:text-[11px] font-bold uppercase tracking-wider mb-0.5">Need help?</span>
+                            <span className="text-white font-extrabold text-sm md:text-base whitespace-nowrap">Live Chat</span>
+                        </div>
+                    </div>
                 )}
             </button>
-
-            {/* ── Notification badge ── */}
-            {!open && (
-                <span className="fixed bottom-[74px] right-5 z-[998] bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg pointer-events-none">
-                    1
-                </span>
-            )}
 
             {/* ── Chat Panel ── */}
             {open && (
