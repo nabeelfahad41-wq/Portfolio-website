@@ -104,7 +104,7 @@ const HeroSection = () => {
           </div>
 
           {/* Image */}
-          <div className="absolute right-[-10%] sm:right-[-5%] md:right-auto md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-20%] sm:bottom-[-15%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] w-[55vw] sm:w-auto md:w-auto flex items-end justify-end md:justify-start pointer-events-none">
+          <div className="absolute right-[-10%] sm:right-[-5%] md:right-auto md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-24%] sm:bottom-[-15%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] w-[55vw] sm:w-auto md:w-auto flex items-end justify-end md:justify-start pointer-events-none">
             <div ref={imageRef} className="h-full w-auto">
               <img
                 src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
