@@ -72,14 +72,14 @@ const HeroSection = () => {
       />
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-4 sm:px-8 mt-0 md:mt-[40px]">
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-4 sm:px-8 -mt-16 md:mt-[40px]">
 
         {/* Desktop Social Icons (Top Right) */}
         <div ref={desktopSocialRef} className="hidden md:flex absolute top-0 right-8 z-50">
           <SocialIcons className="gap-6" />
         </div>
 
-        <div className="relative w-full flex flex-col justify-center items-center overflow-visible h-[450px] sm:h-[500px] md:h-[450px] lg:h-[550px]">
+        <div className="relative w-full flex flex-col justify-center items-center overflow-visible h-[400px] sm:h-[460px] md:h-[450px] lg:h-[550px]">
 
           {/* Background Text */}
           <div
@@ -104,12 +104,12 @@ const HeroSection = () => {
           </div>
 
           {/* Image */}
-          <div className="absolute left-1/2 -translate-x-[25%] md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] flex items-end justify-center md:justify-start pointer-events-none">
+          <div className="absolute right-[-10%] sm:right-[-5%] md:right-auto md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-10%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] w-[55vw] sm:w-auto md:w-auto flex items-end justify-end md:justify-start pointer-events-none">
             <div ref={imageRef} className="h-full w-auto">
               <img
                 src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
                 alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
-                className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.65] md:scale-100"
+                className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
               />
             </div>
           </div>
