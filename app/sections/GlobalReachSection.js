@@ -434,7 +434,7 @@ export default function GlobalReachSection() {
                                         <span>{loc.id}</span>
                                         <span className="h-[1px] w-8 bg-gray-700" />
                                         {loc.subtitle && (
-                                            <span className="text-gray-500 italic text-sm md:text-base leading-relaxed">
+                                            <span className="text-green-500 italic text-sm md:text-base leading-relaxed">
                                                 {loc.subtitle}
                                             </span>
                                         )}

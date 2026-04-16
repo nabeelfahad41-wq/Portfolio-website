@@ -97,7 +97,7 @@ export default function PortfolioPage() {
       </div>
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex items-center px-6 pt-28 md:pt-32 overflow-hidden z-10">
+      <section className="relative min-h-[80vh] lg:min-h-screen flex items-start lg:items-center px-6 pt-32 md:pt-32 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
           <div className="text-center lg:text-left">

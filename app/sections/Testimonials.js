@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { League_Gothic } from "next/font/google";
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
 
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(Draggable);
-}
+const leagueGothic = League_Gothic({
+    subsets: ["latin"],
+    weight: "400"
+});
 
 const testimonialsArray = [
     {
@@ -31,142 +32,138 @@ const testimonialsArray = [
     }
 ];
 
-// Flatten for 3 sets of items to ensure infinite circle feel
+// Flatten for infinite loop
 const allItems = [...testimonialsArray, ...testimonialsArray, ...testimonialsArray];
 
 export default function Testimonials() {
     const trackRef = useRef(null);
-    const xPos = useRef(0);
-    const isPaused = useRef(false);
+    const [activeIndex, setActiveIndex] = useState(testimonialsArray.length); // Start at middle set
+    const [isMoving, setIsMoving] = useState(false);
+    const autoPlayRef = useRef(null);
 
-    useEffect(() => {
-        let width = 0;
+    const getXOffset = useCallback((index) => {
         const track = trackRef.current;
-        const totalItemsCount = testimonialsArray.length;
+        if (!track) return 0;
+        const card = track.querySelector(".testimonial-card");
+        if (!card) return 0;
 
-        const updateWidth = () => {
-            const card = track.querySelector('.testimonial-card');
-            if (card) {
-                const cardWidth = card.offsetWidth + 32; // width + gap
-                width = cardWidth * totalItemsCount;
-                // Center in middle set
-                xPos.current = -width;
-                gsap.set(track, { x: xPos.current });
-            }
-        };
-
-        updateWidth();
-        window.addEventListener("resize", updateWidth);
-        const timer = setTimeout(updateWidth, 500);
-
-        const tick = () => {
-            if (isPaused.current) return;
-            xPos.current -= 0.5; // continuous speed
-
-            // Wrap within middle set
-            if (xPos.current <= -2 * width) {
-                xPos.current += width;
-            } else if (xPos.current >= 0) {
-                xPos.current -= width;
-            }
-
-            gsap.set(track, { x: xPos.current });
-        };
-
-        gsap.ticker.add(tick);
-
-        const draggable = Draggable.create(track, {
-            type: "x",
-            zIndexBoost: false,
-            onPress: () => {
-                isPaused.current = true;
-            },
-            onDrag: function() {
-                xPos.current = this.x;
-            },
-            onRelease: function() {
-                setTimeout(() => {
-                    isPaused.current = false;
-                }, 2000);
-            }
-        })[0];
-
-        return () => {
-            window.removeEventListener("resize", updateWidth);
-            clearTimeout(timer);
-            gsap.ticker.remove(tick);
-            if (draggable) draggable.kill();
-        };
+        const cardWidth = card.offsetWidth;
+        const gap = 32; // gap-8
+        return -(index * (cardWidth + gap));
     }, []);
 
-    const slide = (direction) => {
-        const track = trackRef.current;
-        const card = track?.querySelector('.testimonial-card');
-        if (!card) return;
+    const slide = useCallback((direction) => {
+        if (isMoving) return;
+        setIsMoving(true);
 
-        const step = (card.offsetWidth + 32) * (direction === 'next' ? -1 : 1);
-        isPaused.current = true;
+        const newIndex = direction === "next" ? activeIndex + 1 : activeIndex - 1;
+        const targetX = getXOffset(newIndex);
 
-        gsap.to(xPos, {
-            current: xPos.current + step,
-            duration: 1,
-            ease: "power2.inOut",
-            onUpdate: () => {
-                const cardWidth = card.offsetWidth + 32;
-                const fullWidth = cardWidth * testimonialsArray.length;
-                if (xPos.current <= -2 * fullWidth) xPos.current += fullWidth;
-                else if (xPos.current >= 0) xPos.current -= fullWidth;
-                gsap.set(track, { x: xPos.current });
-            },
+        gsap.to(trackRef.current, {
+            x: targetX,
+            duration: 0.8,
+            ease: "expo.out",
             onComplete: () => {
-                setTimeout(() => {
-                    isPaused.current = false;
-                }, 3000);
+                let finalIndex = newIndex;
+                const len = testimonialsArray.length;
+
+                // Infinite loop logic
+                if (newIndex >= 2 * len) {
+                    finalIndex = newIndex - len;
+                } else if (newIndex < len) {
+                    finalIndex = newIndex + len;
+                }
+
+                if (finalIndex !== newIndex) {
+                    gsap.set(trackRef.current, { x: getXOffset(finalIndex) });
+                }
+
+                setActiveIndex(finalIndex);
+                setIsMoving(false);
             }
         });
+    }, [activeIndex, getXOffset, isMoving]);
+
+    // Auto-play logic
+    useEffect(() => {
+        autoPlayRef.current = setInterval(() => {
+            slide("next");
+        }, 5000);
+
+        return () => clearInterval(autoPlayRef.current);
+    }, [slide]);
+
+    const handleManualSlide = (direction) => {
+        clearInterval(autoPlayRef.current);
+        slide(direction);
     };
+
+    // Initial positioning
+    useEffect(() => {
+        const handleResize = () => {
+            gsap.set(trackRef.current, { x: getXOffset(activeIndex) });
+        };
+        
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        
+        // Small timeout to ensure DOM is ready and widths are calculated
+        const timer = setTimeout(handleResize, 100);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(timer);
+        };
+    }, [activeIndex, getXOffset]);
 
     return (
         <section className="relative w-full pt-20 pb-0 bg-transparent overflow-hidden z-40 select-none">
-            <div className="max-w-7xl mx-auto px-8 md:px-16 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-7xl mx-auto px-8 md:px-16 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 uppercase">
                 <div>
                     <span className="text-sm font-mono text-white/50 uppercase tracking-[0.2em]">Testimonials</span>
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">What my clients say</h2>
+                    <h2 className={`${leagueGothic.className} text-5xl md:text-8xl font-normal text-white tracking-widest uppercase`}>
+                        What my <span className="text-green-500">clients say</span>
+                    </h2>
                 </div>
                 
                 <div className="flex gap-4">
                     <button 
-                        onClick={() => slide('prev')}
-                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-all cursor-pointer"
+                        onClick={() => handleManualSlide('prev')}
+                        disabled={isMoving}
+                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:border-green-500/50 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                     </button>
                     <button 
-                        onClick={() => slide('next')}
-                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-all cursor-pointer"
+                        onClick={() => handleManualSlide('next')}
+                        disabled={isMoving}
+                        className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:border-green-500/50 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                     </button>
                 </div>
             </div>
 
-            <div className="relative w-full overflow-hidden px-16">
-                <div ref={trackRef} className="flex gap-8 will-change-transform cursor-grab active:cursor-grabbing">
+            <div className="relative w-full overflow-hidden px-8 md:px-16">
+                <div 
+                    ref={trackRef} 
+                    className="flex gap-8 will-change-transform"
+                >
                     {allItems.map((t, i) => (
                         <div
                             key={`t-item-${i}`}
-                            className="testimonial-card shrink-0 w-[85vw] md:w-[calc(25%-24px)] min-h-[320px] p-8 rounded-3xl bg-neutral-900 border border-white/10 shadow-2xl flex flex-col justify-between"
+                            className="testimonial-card shrink-0 w-[85vw] md:w-[calc(33.333%-22px)] lg:w-[calc(25%-24px)] min-h-[320px] p-8 rounded-3xl bg-neutral-900/50 backdrop-blur-sm border border-white/10 shadow-2xl flex flex-col justify-between transition-colors duration-500 hover:border-green-500/30"
                         >
                             <div className="flex flex-col gap-6">
-                                <div className="text-green-500">
+                                <div className="text-green-500/50">
                                     <svg width="40" height="30" viewBox="0 0 40 30" fill="currentColor">
                                         <path d="M0 30V15.5C0 11.1667 1.33333 7.33333 4 4C6.66667 0.666667 10.3333 -1 15 1L12 8C10 7 8 8 7 10C6 12 6 13 6 15H15V30H0ZM25 30V15.5C25 11.1667 26.3333 7.33333 29 4C31.6667 0.666667 35.3333 -1 40 1L37 8C35 7 33 8 32 10C31 12 31 13 31 15H40V30H25Z" />
                                     </svg>
                                 </div>
-                                <p className="text-white/80 text-lg leading-relaxed font-medium">{t.quote}</p>
+                                <p className="text-white/80 text-lg leading-relaxed font-light">{t.quote}</p>
                             </div>
                             <div className="mt-8 pt-8 border-t border-white/10">
-                                <h4 className="text-white font-bold text-base uppercase tracking-wider">{t.company}</h4>
+                                <h4 className="text-green-500 font-bold text-sm uppercase tracking-wider">{t.company}</h4>
                             </div>
                         </div>
                     ))}
