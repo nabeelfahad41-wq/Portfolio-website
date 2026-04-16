@@ -79,10 +79,10 @@ const cards = [
 
 const CardLogoDisplay = ({ card, className = "" }) => {
     return (
-        <div className={`w-full flex items-center justify-center py-8 mb-4 bg-white rounded-lg md:rounded-r-3xl md:rounded-l-none border border-white/10 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] h-full ${className}`}>
+        <div className={`w-full flex items-center justify-center bg-white rounded-xl border border-white/10 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] ${className}`}>
             {card.id === 4 ? (
                 /* Portfolio Card Stack (from Service Hero reference) */
-                <div className="relative w-full h-40 md:h-64 flex items-center justify-center scale-75 md:scale-100">
+                <div className="relative w-full h-40 md:h-full py-16 md:py-0 flex items-center justify-center scale-75 md:scale-100">
                     {/* Back Card (Trasccon) */}
                     <div className="absolute w-[70%] h-32 md:h-48 bg-[#111] rounded-lg border border-white/10 shadow-2xl transform -rotate-[12deg] -translate-y-4 -translate-x-4 overflow-hidden opacity-40">
                         <img src="/assets/trasccon.png" className="w-full h-full object-cover object-top" alt="" />
@@ -102,11 +102,13 @@ const CardLogoDisplay = ({ card, className = "" }) => {
                     </div>
                 </div>
             ) : (
-                <img 
-                    src={card.logo} 
-                    alt={card.title} 
-                    className="max-h-20 md:max-h-32 max-w-[80%] object-contain drop-shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-transform duration-500 hover:scale-110" 
-                />
+                <div className="py-10 md:py-0 flex items-center justify-center w-full h-full">
+                    <img 
+                        src={card.logo} 
+                        alt={card.title} 
+                        className="max-h-20 md:max-h-32 max-w-[80%] object-contain drop-shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-transform duration-500 hover:scale-110" 
+                    />
+                </div>
             )}
         </div>
     );
@@ -143,15 +145,17 @@ const MobileTimelineItem = ({ card }) => {
                 <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px] border-r-white/10 ml-1.5 mt-[28px] z-10"></div>
 
                 {/* Content Card */}
-                <div className="ml-0 flex-1 pt-4 pb-2 pr-2 bg-white/[0.03] border border-white/10 rounded-xl p-4 mt-2 font-sans">
-                    <h4 className="text-[#22c55e] font-extrabold text-xl leading-tight w-[95%] uppercase tracking-tight">{card.title}</h4>
-                    <p className="text-gray-400 text-[12px] font-medium mt-1 mb-4 uppercase tracking-[0.15em]">{card.date}</p>
+                <div className="ml-0 flex-1 bg-white/[0.03] border border-white/10 rounded-2xl p-6 mt-2 font-sans relative">
+                    <h4 className="text-[#22c55e] font-extrabold text-2xl leading-tight w-[95%] uppercase tracking-tight mb-2">{card.title}</h4>
+                    <p className="text-gray-400 text-[12px] font-medium mb-6 uppercase tracking-[0.15em]">{card.date}</p>
 
                     {/* Logo Area */}
-                    <CardLogoDisplay card={card} />
+                    <div className="mb-6 h-auto">
+                        <CardLogoDisplay card={card} />
+                    </div>
 
                     {/* Description */}
-                    <p className="text-gray-300 text-[14px] leading-relaxed mb-4 pr-1">
+                    <p className="text-gray-300 text-[14px] leading-relaxed mb-6 pr-1">
                         {card.description}
                     </p>
                     
@@ -279,8 +283,8 @@ export default function StackedCards() {
                             </div>
 
                             {/* Image side */}
-                            <div className="w-full md:w-1/3 relative h-[25%] md:h-auto overflow-hidden shrink-0 block order-1 md:order-2">
-                                <CardLogoDisplay card={card} className="mb-0 rounded-none" />
+                            <div className="w-full md:w-1/3 relative h-full overflow-hidden shrink-0 block order-1 md:order-2">
+                                <CardLogoDisplay card={card} className="rounded-none h-full" />
                                 
                                 {/* Mobile overlay for date and number */}
                                 <div className="absolute bottom-3 left-5 flex md:hidden flex-row items-center gap-3 z-10">
