@@ -84,25 +84,25 @@ export default function ServicesPreview() {
     {
       title: "Web Design & Development",
       desc: "High-converting websites and optimized funnels.",
-      image: "/assets/website.jpg",
+      image: "/assets/website.webp",
       href: "/freelance-web-developer",
     },
     {
       title: "SEO & Organic Growth",
       desc: "Global keyword targeting and sustainable rank growth.",
-      image: "/assets/seo.png",
+      image: "/assets/seo.webp",
       href: "/seo-freelancer",
     },
     {
       title: "Performance Marketing",
       desc: "ROI-focused campaigns built to convert.",
-      image: "/assets/performance marketing.png",
+      image: "/assets/performance-marketing.webp",
       href: "/freelance-performance-marketer",
     },
     {
       title: "Social Media Marketing",
       desc: "Scroll-stopping creative and growth-driven strategies.",
-      image: "/assets/social media (1).jpg",
+      image: "/assets/social-media.webp",
       href: "/freelance-social-media-marketer",
     },
   ];

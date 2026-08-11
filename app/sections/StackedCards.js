@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { League_Gothic } from "next/font/google";
 import gsap from "gsap";
@@ -73,7 +74,7 @@ const cards = [
         ],
         color: "bg-neutral-600",
         image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop",
-        logo: "/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
+        logo: "/assets/hero-portrait.webp"
     },
 ];
 
@@ -85,28 +86,28 @@ const CardLogoDisplay = ({ card, className = "" }) => {
                 <div className="relative w-full h-40 md:h-full py-16 md:py-0 flex items-center justify-center scale-75 md:scale-100">
                     {/* Back Card (Trasccon) */}
                     <div className="absolute w-[70%] h-32 md:h-48 bg-[#111] rounded-lg border border-white/10 shadow-2xl transform -rotate-[12deg] -translate-y-4 -translate-x-4 overflow-hidden opacity-40">
-                        <img src="/assets/trasccon.png" className="w-full h-full object-cover object-top" alt="" />
+                        <Image src="/assets/trasccon.webp" width={300} height={200} loading="lazy" className="w-full h-full object-cover object-top" alt="Trasccon project" />
                     </div>
                     {/* 3rd Card (Rain Country) */}
                     <div className="absolute w-[70%] h-32 md:h-48 bg-[#111] rounded-lg border border-white/10 shadow-2xl transform rotate-[8deg] -translate-y-2 translate-x-3 overflow-hidden opacity-60">
-                        <img src="/assets/rain country.png" className="w-full h-full object-cover object-top" alt="" />
+                        <Image src="/assets/rain-country.webp" width={300} height={200} loading="lazy" className="w-full h-full object-cover object-top" alt="Rain Country project" />
                     </div>
                     {/* 2nd Card (Leadworkz) */}
                     <div className="absolute w-[70%] h-32 md:h-48 bg-[#111] rounded-lg border border-white/10 shadow-2xl transform -rotate-[4deg] translate-y-2 -translate-x-2 overflow-hidden opacity-80">
-                        <img src="/assets/leadworks.png" className="w-full h-full object-cover object-top" alt="" />
+                        <Image src="/assets/leadworks.webp" width={300} height={200} loading="lazy" className="w-full h-full object-cover object-top" alt="Leadworkz project" />
                     </div>
                     {/* Top Card (Navodaya) */}
                     <div className="absolute w-[70%] h-32 md:h-48 bg-[#111] rounded-lg border border-white/10 shadow-2xl transform rotate-[2deg] translate-y-4 translate-x-1 overflow-hidden z-10 border-white/20">
-                        <img src="/assets/navodaya.png" className="w-full h-full object-cover object-top" alt="" />
+                        <Image src="/assets/navodaya.webp" width={300} height={200} loading="lazy" className="w-full h-full object-cover object-top" alt="Navodaya project" />
                         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
                 </div>
             ) : (
                 <div className="py-10 md:py-0 flex items-center justify-center w-full h-full">
-                    <img 
-                        src={card.logo} 
-                        alt={card.title} 
-                        className="max-h-20 md:max-h-32 max-w-[80%] object-contain drop-shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-transform duration-500 hover:scale-110" 
+                    <img
+                        src={card.logo}
+                        alt={card.title}
+                        className="max-h-20 md:max-h-32 max-w-[80%] object-contain drop-shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-transform duration-500 hover:scale-110"
                     />
                 </div>
             )}
@@ -116,7 +117,7 @@ const CardLogoDisplay = ({ card, className = "" }) => {
 
 const MobileTimelineItem = ({ card }) => {
     const [expanded, setExpanded] = useState(false);
-    
+
     // Extract year for the badge
     const yearMatch = card.date.match(/\d{4}/);
     const yearOnly = yearMatch ? yearMatch[0] : card.date;
@@ -158,9 +159,9 @@ const MobileTimelineItem = ({ card }) => {
                     <p className="text-gray-300 text-[14px] leading-relaxed mb-6 pr-1">
                         {card.description}
                     </p>
-                    
-                    <button 
-                        onClick={() => setExpanded(!expanded)} 
+
+                    <button
+                        onClick={() => setExpanded(!expanded)}
                         className="flex items-center gap-2 text-[#22c55e] font-bold text-[13px] uppercase tracking-widest hover:brightness-110 transition-all"
                     >
                         <span>{expanded ? "READ LESS" : "READ MORE"}</span>
@@ -170,7 +171,7 @@ const MobileTimelineItem = ({ card }) => {
                     </button>
 
                     {/* Expanded Content (Bullets) */}
-                    <div 
+                    <div
                         className={`overflow-hidden transition-all duration-500 ease-in-out ${expanded ? "max-h-[800px] opacity-100 mt-6" : "max-h-0 opacity-0"}`}
                     >
                         <ul className="space-y-4 border-t border-white/10 pt-4">
@@ -237,7 +238,7 @@ export default function StackedCards() {
             className="w-full bg-transparent text-white"
         >
             {/* Desktop View (Unchanged) */}
-            <div 
+            <div
                 ref={containerRef}
                 className="relative hidden md:flex flex-col items-center gap-10 py-20 px-4 md:px-10"
             >
@@ -268,10 +269,10 @@ export default function StackedCards() {
                                     <span className="text-sm md:text-base font-mono text-white/50 uppercase tracking-widest shrink-0">0{card.id}</span>
                                     <span className="text-[11px] md:text-sm font-semibold bg-white/10 text-white rounded-full px-2 py-0.5 md:px-3 md:py-1 w-fit">{card.date}</span>
                                 </div>
-                                
+
                                 <h3 className="text-[27px] leading-tight md:text-4xl lg:text-5xl font-bold mb-0.5 md:mb-1">{card.title}</h3>
                                 <p className="text-white/80 text-[15px] md:text-lg leading-snug md:leading-relaxed">{card.description}</p>
-                                
+
                                 <ul className="mt-1 md:mt-2 space-y-2 md:space-y-3 overflow-y-auto pr-1 pb-2">
                                     {card.bullets.map((bullet, idx) => (
                                         <li key={idx} className="flex gap-2 md:gap-3 text-[15px] md:text-lg text-gray-300 items-start">
@@ -285,7 +286,7 @@ export default function StackedCards() {
                             {/* Image side */}
                             <div className="w-full md:w-1/3 relative h-full overflow-hidden shrink-0 block order-1 md:order-2">
                                 <CardLogoDisplay card={card} className="rounded-none h-full" />
-                                
+
                                 {/* Mobile overlay for date and number */}
                                 <div className="absolute bottom-3 left-5 flex md:hidden flex-row items-center gap-3 z-10">
                                     <span className="text-[14px] font-mono text-white uppercase tracking-widest shrink-0 drop-shadow-md">0{card.id}</span>
@@ -310,7 +311,7 @@ export default function StackedCards() {
 
             {/* Mobile View (Timeline) */}
             <div className="md:hidden w-full px-5 py-16 flex flex-col relative overflow-hidden bg-[linear-gradient(90deg,#000000,#737373)]">
-                
+
                 {/* Grid Overlay */}
                 <div
                     className="absolute inset-0 z-0 opacity-5"
@@ -319,7 +320,7 @@ export default function StackedCards() {
                         backgroundSize: '40px 40px'
                     }}
                 />
-                
+
                 {/* Mobile Header */}
                 <div className="w-full text-center mb-12 relative z-10">
                     <h2 className="text-white text-base font-bold tracking-[0.2em] uppercase mb-0 font-sans">MY</h2>
@@ -330,7 +331,7 @@ export default function StackedCards() {
                 <div className="w-full relative min-h-[500px] pb-10">
                     {/* Main continuous white line down the back (only visible in gaps) */}
                     <div className="absolute left-[36px] top-4 bottom-10 w-[5px] bg-white z-0" />
-                    
+
                     {/* Arrow at the end of the line */}
                     <div className="absolute left-[36px] bottom-10 -translate-x-1/2 translate-y-full z-20">
                         <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[14px] border-t-white opacity-60" />
@@ -339,8 +340,8 @@ export default function StackedCards() {
 
                     <div className="flex flex-col gap-0 w-full relative z-10">
                         {cards.map((card, i) => (
-                            <div 
-                                key={card.id} 
+                            <div
+                                key={card.id}
                                 className="timeline-item-entry"
                                 style={{ animationDelay: `${i * 0.15}s` }}
                             >

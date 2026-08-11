@@ -17,6 +17,7 @@ import {
 } from "three";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -452,9 +453,12 @@ export default function GlobalReachSection() {
 
                     {/* RIGHT SIDE IMAGE FOR DESKTOP */}
                     <div className="hidden md:flex absolute right-0 bottom-[-20px] lg:bottom-[-40px] h-screen w-1/2 items-end justify-center pointer-events-none px-12 pb-0">
-                        <img 
-                            src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o 4.png" 
+                        <Image
+                            src="/assets/global-reach-hero.webp"
                             alt="Global Reach"
+                            width={600}
+                            height={800}
+                            loading="lazy"
                             className="w-full h-auto max-h-[100vh] object-contain object-bottom opacity-95"
                         />
                     </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useLayoutEffect, useRef } from 'react';
+import Image from 'next/image';
 import { MessageCircle, Instagram, Linkedin, AtSign } from 'lucide-react';
 import { League_Gothic } from "next/font/google";
 import gsap from 'gsap';
@@ -23,16 +24,16 @@ const HeroSection = () => {
       const targets = [".hero-heading-line", subTextRef.current, imageRef.current, ctaRef.current, desktopSocialRef.current];
 
       // Initial deterministic state prior to animation to avoid flashes and layout shifts
-      gsap.set(targets, { 
+      gsap.set(targets, {
         y: 60,
         opacity: 0,
         visibility: "hidden"
       });
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      tl.to(targets, { 
+      tl.to(targets, {
         y: 0,
-        autoAlpha: 1, 
+        autoAlpha: 1,
         duration: 1.2,
         ease: "power3.out",
         clearProps: "transform,opacity,visibility" // Target specific props so we don't wipe out the inline WebkitTextStroke styles!
@@ -106,9 +107,12 @@ const HeroSection = () => {
           {/* Image */}
           <div className="absolute right-[-10%] sm:right-[-5%] md:right-auto md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-24%] sm:bottom-[-15%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] w-[55vw] sm:w-auto md:w-auto flex items-end justify-end md:justify-start pointer-events-none">
             <div ref={imageRef} className="h-full w-auto">
-              <img
-                src="/assets/Gemini_Generated_Image_jg9o8ojg9o8ojg9o (1).png"
+              <Image
+                src="/assets/hero-portrait.webp"
                 alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
+                width={500}
+                height={700}
+                priority
                 className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
               />
             </div>
@@ -146,15 +150,15 @@ const HeroSection = () => {
           <div className="flex flex-col items-center md:items-end w-full max-w-4xl">
 
             <p ref={subTextRef} className="text-[#d3d0cb] text-[0.95rem] md:text-lg lg:text-xl lg:text-[1.35rem] leading-relaxed xl:leading-loose text-center font-light w-full">
-              I’m Nabeel — a freelance digital marketing strategist focused on execution that actually drives results. 
+              I’m Nabeel — a freelance digital marketing strategist focused on execution that actually drives results.
               I build and optimize systems that turn your online presence into consistent leads and revenue.
             </p>
 
             {/* CTA Button */}
             <div className="w-full flex justify-start md:justify-end items-center mt-6 md:mt-4">
               <div ref={ctaRef}>
-                <a 
-                  href="tel:+918111830647" 
+                <a
+                  href="tel:+918111830647"
                   className="cssbuttons-io-button md:-translate-y-16"
                 >
                   Let's talk

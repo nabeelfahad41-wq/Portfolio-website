@@ -95,13 +95,13 @@ const LogoCarousel = () => {
         { name: "LinkedIn", url: "/assets/logos/linkedin.svg" },
         { name: "Shopify", url: "/assets/logos/shopify.svg" },
         { name: "WhatsApp", url: "/assets/logos/whatsapp.svg" },
-        
+
         { name: "Claude AI", url: "/assets/Claude_AI_symbol.svg" },
-        { name: "Figma", url: "/assets/Figma-logo.svg.png" },
-        { name: "Instagram", url: "/assets/Instagram_icon.png" },
+        { name: "Figma", url: "/assets/figma-logo.webp" },
+        { name: "Instagram", url: "/assets/instagram-icon.webp" },
         { name: "VS Code", url: "/assets/Visual_Studio_Code_1.35_icon.svg.png" },
         { name: "WordPress", url: "/assets/WordPress_blue_logo.svg.png" },
-        { name: "Google Ads", url: "/assets/google ads.png" },
+        { name: "Google Ads", url: "/assets/google-ads.webp" },
         { name: "Google Search Console", url: "/assets/google-search-console-icon.webp" }
     ];
 
