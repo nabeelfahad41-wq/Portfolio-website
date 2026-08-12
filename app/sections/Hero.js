@@ -104,20 +104,17 @@ const HeroSection = () => {
           {/* Image */}
           <div className="absolute right-[-10%] sm:right-[-5%] md:right-auto md:left-[2%] md:translate-x-0 lg:left-[5%] bottom-[-24%] sm:bottom-[-15%] md:bottom-[-10%] z-10 h-[145%] sm:h-[150%] md:h-[120%] lg:h-[135%] w-[55vw] sm:w-auto md:w-auto flex items-end justify-end md:justify-start pointer-events-none">
             <div ref={imageRef} className="h-full w-auto">
-              <picture className="h-full w-auto flex items-end">
-                <source media="(max-width: 767px)" srcSet="/assets/hero-portrait-mobile.webp" type="image/webp" />
-                <source media="(min-width: 768px)" srcSet="/assets/hero-portrait.webp" type="image/webp" />
-                <Image
-                  src="/assets/hero-portrait.webp"
-                  alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
-                  width={500}
-                  height={700}
-                  priority
-                  fetchPriority="high"
-                  unoptimized
-                  className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
-                />
-              </picture>
+              <Image
+                src="/assets/hero-portrait.webp"
+                alt="Nabeel - Freelance Digital Marketing Strategist in Bangalore and Kerala"
+                width={500}
+                height={700}
+                priority
+                fetchPriority="high"
+                unoptimized
+                sizes="(max-width: 768px) 55vw, (max-width: 1200px) 40vw, 500px"
+                className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
+              />
             </div>
           </div>
 

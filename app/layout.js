@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Bebas_Neue, League_Gothic } from "next/font/google";
+import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import GlobalBackground from "./component/GlobalBackground";
 import Navbar from "./component/Navbar";
@@ -24,13 +24,6 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
   display: "swap",
   preload: false,
-});
-
-const leagueGothic = League_Gothic({
-  variable: "--font-league-gothic",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
 });
 
 import { siteConfig } from "@/content/config";
@@ -61,25 +54,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/hero-portrait-mobile.webp"
-          type="image/webp"
-          fetchPriority="high"
-          media="(max-width: 767px)"
-        />
         <link
           rel="preload"
           as="image"
           href="/assets/hero-portrait.webp"
           type="image/webp"
           fetchPriority="high"
-          media="(min-width: 768px)"
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${leagueGothic.variable} bg-black`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} bg-black`}>
         <GlobalBackground />
         <Navbar />
         <ScrollRefresh />
