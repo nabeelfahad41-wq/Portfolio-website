@@ -21,10 +21,13 @@ const HeroSection = () => {
   const desktopSocialRef = useRef(null);
 
   useLayoutEffect(() => {
+    // Skip GSAP layout animation on mobile viewports to save mobile CPU cycle rendering
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
+
     const ctx = gsap.context(() => {
       const targets = [".hero-heading-line", subTextRef.current, imageRef.current, ctaRef.current, desktopSocialRef.current];
 
-      // Non-blocking entrance animation: elements render immediately on HTML paint, then animate smoothly
+      // Non-blocking entrance animation for desktop
       gsap.from(targets, {
         y: 30,
         duration: 0.8,
@@ -108,6 +111,7 @@ const HeroSection = () => {
                 height={700}
                 priority
                 fetchPriority="high"
+                unoptimized
                 sizes="(max-width: 768px) 55vw, (max-width: 1200px) 40vw, 500px"
                 className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
               />
