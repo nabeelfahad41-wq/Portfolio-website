@@ -8,7 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const leagueGothic = League_Gothic({
     subsets: ["latin"],
-    weight: "400"
+    weight: "400",
+    display: "swap"
 });
 
 gsap.registerPlugin(ScrollTrigger);

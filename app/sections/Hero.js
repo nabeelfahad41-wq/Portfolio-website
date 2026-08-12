@@ -7,7 +7,8 @@ import gsap from 'gsap';
 
 const leagueGothic = League_Gothic({
   subsets: ["latin"],
-  weight: "400"
+  weight: "400",
+  display: "swap"
 });
 
 const HeroSection = () => {
@@ -23,20 +24,13 @@ const HeroSection = () => {
     const ctx = gsap.context(() => {
       const targets = [".hero-heading-line", subTextRef.current, imageRef.current, ctaRef.current, desktopSocialRef.current];
 
-      // Initial deterministic state prior to animation to avoid flashes and layout shifts
-      gsap.set(targets, {
-        y: 60,
-        opacity: 0,
-        visibility: "hidden"
-      });
-
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      tl.to(targets, {
-        y: 0,
-        autoAlpha: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        clearProps: "transform,opacity,visibility" // Target specific props so we don't wipe out the inline WebkitTextStroke styles!
+      // Non-blocking entrance animation: elements render immediately on HTML paint, then animate smoothly
+      gsap.from(targets, {
+        y: 30,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: "power2.out",
+        clearProps: "transform"
       });
     }, containerRef);
 
@@ -113,6 +107,8 @@ const HeroSection = () => {
                 width={500}
                 height={700}
                 priority
+                fetchPriority="high"
+                sizes="(max-width: 768px) 55vw, (max-width: 1200px) 40vw, 500px"
                 className="h-full w-auto object-contain object-bottom origin-bottom scale-[1.35] md:scale-100"
               />
             </div>
