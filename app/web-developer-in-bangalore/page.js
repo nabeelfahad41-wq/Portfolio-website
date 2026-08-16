@@ -55,7 +55,7 @@ export default function WebDeveloperInBangalore() {
 
       // Section Fade-ins
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -72,7 +72,7 @@ export default function WebDeveloperInBangalore() {
       });
 
       // Service Cards Stagger
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -100,19 +100,19 @@ export default function WebDeveloperInBangalore() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Freelance Web Developer",
-        "item": "https://www.adlyst.in/freelance-web-developer"
+        "item": "https://www.nabeelscale.com/freelance-web-developer"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Bangalore",
-        "item": "https://www.adlyst.in/web-developer-in-bangalore"
+        "item": "https://www.nabeelscale.com/web-developer-in-bangalore"
       }
     ]
   };
@@ -123,8 +123,9 @@ export default function WebDeveloperInBangalore() {
     "name": "Web Developer in Bangalore",
     "description": "Freelance website designer offering SEO-focused website development, modern design, and high-performance websites built for business growth in Bangalore.",
     "areaServed": "Bangalore",
+    "url": "https://www.nabeelscale.com/web-developer-in-bangalore",
     "sameAs": [
-      "https://www.adlyst.in/web-developer-in-bangalore"
+      "https://www.nabeelscale.com/web-developer-in-bangalore"
     ]
   };
 
@@ -156,7 +157,7 @@ export default function WebDeveloperInBangalore() {
             </nav>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.1] text-white">
-              Web Developer <br className="hidden lg:block"/> in <span className="text-[#43A047]">Bangalore.</span>
+              Web Developer <br className="hidden lg:block" /> in <span className="text-[#43A047]">Bangalore.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-200 font-medium mb-8 max-w-2xl leading-relaxed">
@@ -194,37 +195,37 @@ export default function WebDeveloperInBangalore() {
           <div className="relative flex items-center justify-center w-full mt-12 lg:mt-0">
             <div className="relative w-[312px] h-[422px] sm:w-[384px] sm:h-[520px] lg:w-[480px] lg:h-[650px] mx-auto">
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/web-developer-in-bangalore-defence-industry-portfolio.png" alt="High-performance business website developed for Bangalore defence manufacturing company" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/web-developer-in-bangalore-defence-industry-portfolio.png" alt="High-performance business website developed for Bangalore defence manufacturing company" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/bangalore-freelance-website-designer-agency-project.png" alt="Next.js custom web development for Bangalore marketing agencies by freelance website designer" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/bangalore-freelance-website-designer-agency-project.png" alt="Next.js custom web development for Bangalore marketing agencies by freelance website designer" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo-focused-website-development-bangalore-tourism.png" alt="SEO-ready travel website developed by Bangalore web developer for measurable growth" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo-focused-website-development-bangalore-tourism.png" alt="SEO-ready travel website developed by Bangalore web developer for measurable growth" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-40 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '390px', left: '-5px', transform: 'rotate(-3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/b2b-website-design-bangalore-industrial-growth.png" alt="B2B website design showcasing strategic industrial web development in Bangalore" className="w-full h-full object-cover object-top" loading="lazy" />
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-40 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '390px', left: '-5px', transform: 'rotate(-3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/b2b-website-design-bangalore-industrial-growth.png" alt="B2B website design showcasing strategic industrial web development in Bangalore" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </section>
 
       {/* --- SECTION 2: Freelance Web Developer in Bangalore for Modern Businesses --- */}
@@ -283,10 +284,10 @@ export default function WebDeveloperInBangalore() {
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Not Just a Website Developer</h2>
             <p className="text-xl text-[#43A047] font-medium tracking-wide uppercase">A Business-Focused Partner</p>
           </div>
-          
+
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              Most freelance web developers focus only on design or coding. 
+              Most freelance web developers focus only on design or coding.
               <br className="hidden md:block" />
               I approach every project with a business and revenue perspective.
             </p>

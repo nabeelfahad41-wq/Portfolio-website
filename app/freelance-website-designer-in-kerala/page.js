@@ -55,7 +55,7 @@ export default function KeralaWebDeveloper() {
       );
 
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -71,7 +71,7 @@ export default function KeralaWebDeveloper() {
         );
       });
 
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -99,19 +99,19 @@ export default function KeralaWebDeveloper() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Freelance Web Developer",
-        "item": "https://www.adlyst.in/freelance-web-developer"
+        "item": "https://www.nabeelscale.com/freelance-web-developer"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Kerala",
-        "item": "https://www.adlyst.in/freelance-website-designer-in-kerala"
+        "item": "https://www.nabeelscale.com/freelance-website-designer-in-kerala"
       }
     ]
   };
@@ -123,8 +123,9 @@ export default function KeralaWebDeveloper() {
     "description": "Native Malayalam-speaking freelance web developer offering SEO-focused website design and high-performance development in Kerala.",
     "areaServed": "Kerala",
     "knowsLanguage": ["Malayalam", "English"],
+    "url": "https://www.nabeelscale.com/freelance-website-designer-in-kerala",
     "sameAs": [
-      "https://www.adlyst.in/freelance-website-designer-in-kerala"
+      "https://www.nabeelscale.com/freelance-website-designer-in-kerala"
     ]
   };
 
@@ -157,7 +158,7 @@ export default function KeralaWebDeveloper() {
             </nav>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.1] text-white tracking-tight">
-              Freelance Website Designer in Kerala <br className="hidden lg:block"/> <span className="text-[#43A047]">Who Understands Your Business & Local Market</span>
+              Freelance Website Designer in Kerala <br className="hidden lg:block" /> <span className="text-[#43A047]">Who Understands Your Business & Local Market</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-200 font-medium mb-6 max-w-2xl leading-relaxed">
@@ -288,7 +289,7 @@ export default function KeralaWebDeveloper() {
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Kerala Businesses Prefer Working With Me</h2>
             <p className="text-xl text-[#43A047] font-medium tracking-wide uppercase">Trusted Freelance Partnership</p>
           </div>
-          
+
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <p className="text-xl text-gray-300 leading-relaxed font-light">
               Working with a freelancer requires trust and clear communication.

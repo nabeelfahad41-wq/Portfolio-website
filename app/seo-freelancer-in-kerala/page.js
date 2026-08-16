@@ -54,7 +54,7 @@ export default function SEOKerala() {
       );
 
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -70,7 +70,7 @@ export default function SEOKerala() {
         );
       });
 
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -97,19 +97,19 @@ export default function SEOKerala() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "SEO Freelancer",
-        "item": "https://www.adlyst.in/seo-freelancer"
+        "item": "https://www.nabeelscale.com/seo-freelancer"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "SEO Freelancer in Kerala",
-        "item": "https://www.adlyst.in/seo-freelancer-in-kerala"
+        "item": "https://www.nabeelscale.com/seo-freelancer-in-kerala"
       }
     ]
   };
@@ -118,7 +118,7 @@ export default function SEOKerala() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "SEO Freelancer in Kerala",
-    "url": "https://www.adlyst.in/seo-freelancer-in-kerala",
+    "url": "https://www.nabeelscale.com/seo-freelancer-in-kerala",
     "jobTitle": "Freelance SEO Expert Kerala",
     "description": "SEO freelancer in Kerala with deep local understanding and Malayalam communication. Helping businesses rank with intent-driven SEO strategies.",
     "areaServed": {
@@ -126,7 +126,7 @@ export default function SEOKerala() {
       "name": "Kerala"
     },
     "sameAs": [
-      "https://www.adlyst.in/seo-freelancer-in-kerala"
+      "https://www.nabeelscale.com/seo-freelancer-in-kerala"
     ]
   };
 
@@ -211,8 +211,8 @@ export default function SEOKerala() {
                 { name: "Bangalore", path: "/seo-freelancer-in-bangalore" },
                 { name: "Kerala", path: "/seo-freelancer-in-kerala" }
               ].map((loc, i) => (
-                <Link 
-                  key={i} 
+                <Link
+                  key={i}
                   href={loc.path}
                   className={`text-[10px] sm:text-xs font-semibold hover:text-[#43A047] transition-all flex items-center gap-1 group whitespace-nowrap ${loc.name === 'Kerala' ? 'text-[#43A047]' : 'text-gray-500'}`}
                 >
@@ -228,37 +228,37 @@ export default function SEOKerala() {
             <div className="relative w-[312px] h-[422px] sm:w-[384px] sm:h-[520px] lg:w-[480px] lg:h-[650px] mx-auto">
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google Search Console keyword ranking screenshot demonstrating Nabeel's proven SEO results in Kerala" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google Search Console keyword ranking screenshot demonstrating Nabeel's proven SEO results in Kerala" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo result of nabeel.png" alt="Google SEO results and organic traffic growth in Kerala market" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo result of nabeel.png" alt="Google SEO results and organic traffic growth in Kerala market" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo ranking proof of nabeel's work.png" alt="Data-driven SEO ranking proof showcasing significant search engine visibility improvements" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo ranking proof of nabeel's work.png" alt="Data-driven SEO ranking proof showcasing significant search engine visibility improvements" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
       {/* --- ABOUT ME (Kerala Context) --- */}
       <section className="reveal-section py-20 md:py-32 px-6 bg-gradient-to-br from-white via-gray-50 to-white text-black overflow-hidden relative">
         <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000000 1px, transparent 1px), linear-gradient(to bottom, #000000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#43A047] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-3 block">Local SEO Expert</span>
@@ -272,11 +272,11 @@ export default function SEOKerala() {
 
           <div className="p-10 rounded-[2rem] bg-white border border-gray-100 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
-            
+
             <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
               <MessageSquare className="text-[#43A047] w-6 h-6" /> Seamless Communication in Malayalam & English
             </h3>
-            
+
             <p className="text-gray-600 mb-8">One of the biggest challenges businesses face with SEO is communication gaps. With me as your SEO consultant, collaboration becomes smoother:</p>
 
             <div className="grid sm:grid-cols-2 gap-6 mb-8 text-gray-600">
@@ -297,7 +297,7 @@ export default function SEOKerala() {
                 <p>Better execution through transparent process updates.</p>
               </div>
             </div>
-            
+
             <div className="p-6 rounded-2xl bg-gray-50 border-l-4 border-[#43A047]">
               <p className="text-lg font-medium italic text-gray-800">
                 "As an SEO consultant in Kerala, I don’t just focus on rankings — I focus on how SEO contributes to your business revenue."
@@ -316,24 +316,24 @@ export default function SEOKerala() {
           </div>
 
           <div className="grid lg:grid-cols-4 gap-8 mb-8">
-            <ApproachCard 
-              num="1" 
-              title="Local Search Intent" 
+            <ApproachCard
+              num="1"
+              title="Local Search Intent"
               desc="Understanding how users search within Kerala and optimizing content accordingly to catch local demand."
             />
-            <ApproachCard 
-              num="2" 
-              title="Location-Focused" 
+            <ApproachCard
+              num="2"
+              title="Location-Focused"
               desc="Targeting specific city-based keywords ensuring maximum reach in areas like Calicut, Kochi, and Trivandrum."
             />
-            <ApproachCard 
-              num="3" 
-              title="Content That Connects" 
+            <ApproachCard
+              num="3"
+              title="Content That Connects"
               desc="Creating engaging content that resonates specifically with the local audience mindset and builds trust factors."
             />
-            <ApproachCard 
-              num="4" 
-              title="Technical & On-Page" 
+            <ApproachCard
+              num="4"
+              title="Technical & On-Page"
               desc="Ensuring your website is search engine friendly, lightning fast, and perfectly structured for rapid indexing."
             />
           </div>
@@ -404,12 +404,12 @@ export default function SEOKerala() {
                 <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 className="w-5 h-5 mt-0.5 text-[#43A047] shrink-0" /> Built SEO systems designed explicitly for long-term scalability.</li>
               </ul>
             </div>
-            
+
             <div className="w-full lg:w-1/2">
               <div className="bg-[#0a0a0a] rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#43A047]/20 blur-[50px]"></div>
                 <h3 className="text-2xl font-bold mb-8">Execution Focus <span className="text-gray-400 font-normal text-lg"></span></h3>
-                
+
                 <div className="flex flex-col gap-6">
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4">
                     <BarChart3 className="w-8 h-8 text-[#43A047] shrink-0 mt-1" />

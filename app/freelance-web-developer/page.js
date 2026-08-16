@@ -57,7 +57,7 @@ export default function FreelanceWebDeveloper() {
 
       // Section Fade-ins — use "play none none none" to avoid scroll-lock on reverse
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -74,7 +74,7 @@ export default function FreelanceWebDeveloper() {
       });
 
       // Service Cards Stagger — scroll into view
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -102,13 +102,13 @@ export default function FreelanceWebDeveloper() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Freelance Web Developer",
-        "item": "https://www.adlyst.in/freelance-web-developer"
+        "item": "https://www.nabeelscale.com/freelance-web-developer"
       }
     ]
   };
@@ -116,12 +116,12 @@ export default function FreelanceWebDeveloper() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Freelance Web Developer",
-    "url": "https://www.adlyst.in/freelance-web-developer",
+    "name": "Nabeel - Freelance Web Developer",
+    "url": "https://www.nabeelscale.com/freelance-web-developer",
     "jobTitle": "Freelance Website Designer & Developer",
     "description": "Expert freelance web developer & designer offering custom website development, Next.js optimization, and UI/UX solutions.",
     "sameAs": [
-      "https://www.adlyst.in/freelance-web-developer"
+      "https://www.nabeelscale.com/freelance-web-developer"
     ]
   };
 
@@ -199,8 +199,8 @@ export default function FreelanceWebDeveloper() {
                 { name: "Kochi", path: "/freelance-web-developer-kochi" },
                 { name: "Calicut", path: "/freelance-web-developer-calicut" }
               ].map((loc, i) => (
-                <Link 
-                  key={i} 
+                <Link
+                  key={i}
                   href={loc.path}
                   className="text-[10px] sm:text-xs font-semibold text-gray-500 hover:text-[#43A047] transition-all flex items-center gap-1 group whitespace-nowrap"
                 >
@@ -217,41 +217,41 @@ export default function FreelanceWebDeveloper() {
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
 
                 {/* Card 1 — Trasccon (Top, Back) */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/freelance-web-design-defence-manufacturing-trasccon.png" alt="High-trust defence manufacturing website developed by freelance web developer for Trasccon" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/freelance-web-design-defence-manufacturing-trasccon.png" alt="High-trust defence manufacturing website developed by freelance web developer for Trasccon" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              {/* Card 2 — Leadworkz */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/custom-website-development-digital-marketing-agency-leadworkz.png" alt="Premium custom website developed in Next.js for Leadworkz digital marketing agency" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                {/* Card 2 — Leadworkz */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/custom-website-development-digital-marketing-agency-leadworkz.png" alt="Premium custom website developed in Next.js for Leadworkz digital marketing agency" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              {/* Card 3 — Rain Country */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/hospitality-website-design-resorts-seo.png" alt="SEO-focused hospitality website design driving organic bookings for Rain Country resorts" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                {/* Card 3 — Rain Country */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/hospitality-website-design-resorts-seo.png" alt="SEO-focused hospitality website design driving organic bookings for Rain Country resorts" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              {/* Card 4 — Navodaya (Bottom, Front) */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-40 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '390px', left: '-5px', transform: 'rotate(-3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/b2b-industrial-website-developer-navodaya.png" alt="Conversion-focused B2B industrial website developed for Navodaya Power" className="w-full h-full object-cover object-top" loading="lazy" />
+                {/* Card 4 — Navodaya (Bottom, Front) */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-40 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '390px', left: '-5px', transform: 'rotate(-3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/b2b-industrial-website-developer-navodaya.png" alt="Conversion-focused B2B industrial website developed for Navodaya Power" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* --- SECTION 2: SERVICES (Light Neutral Theme) --- */}
       <section className="py-20 md:py-32 px-6 bg-gradient-to-br from-white via-gray-50 to-white text-black overflow-hidden relative">
@@ -441,7 +441,7 @@ export default function FreelanceWebDeveloper() {
       <section className="reveal-section py-24 px-6 bg-white border-y border-gray-100 relative overflow-hidden">
         {/* Light Theme Grid Overlay */}
         <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000000 1px, transparent 1px), linear-gradient(to bottom, #000000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-black">Technology Stack</h2>
           <p className="text-xl text-gray-500 mb-16 font-medium">Tools & Technologies I Use</p>
@@ -489,7 +489,7 @@ export default function FreelanceWebDeveloper() {
                 <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#43A047]/50 transition-all group flex flex-col items-center text-center backdrop-blur-sm relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-[#43A047]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <h4 className="text-2xl font-black text-white mb-6 relative z-10">{loc.name}</h4>
-                  <Link 
+                  <Link
                     href={loc.path === "bangalore" ? "/web-developer-in-bangalore" : loc.path === "kerala" ? "/freelance-website-designer-in-kerala" : loc.path === "kochi" ? "/freelance-web-developer-kochi" : loc.path === "calicut" ? "/freelance-web-developer-calicut" : `/freelance-web-developer/${loc.path}`}
                     className="w-full py-3 rounded-full bg-white/10 border border-white/20 text-sm font-semibold text-white group-hover:bg-[#43A047] group-hover:border-[#43A047] transition-all relative z-10 shadow-lg group-hover:shadow-[0_10px_30px_rgba(67,160,71,0.3)]"
                   >

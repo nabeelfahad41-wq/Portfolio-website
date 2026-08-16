@@ -18,7 +18,7 @@ export const metadata = {
     title: "Freelance Social Media Marketer | Social Media Freelancer & Ads Expert",
     description:
       "Freelance social media marketer with proven B2B growth. Scaled LinkedIn followers 2X in 6 months. Expert in social media strategy & ads.",
-    url: "https://adlyst.agency/freelance-social-media-marketer",
+    url: "https://www.nabeelscale.com/freelance-social-media-marketer",
     siteName: "Nabeel | Freelance Digital Marketer",
     type: "website",
   },
@@ -29,6 +29,6 @@ export const metadata = {
       "Freelance social media marketer with proven B2B growth. Scaled LinkedIn followers 2X in 6 months. Expert in social media strategy & ads.",
   },
   alternates: {
-    canonical: "https://adlyst.agency/freelance-social-media-marketer",
+    canonical: "https://www.nabeelscale.com/freelance-social-media-marketer",
   },
 };

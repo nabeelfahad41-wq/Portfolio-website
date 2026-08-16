@@ -31,10 +31,11 @@ const JsonLd = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Nabeel - Freelance Digital Marketer",
-    "description": "Freelance digital marketing strategist based in Bangalore & Kerala focusing on lead generation and revenue growth.",
+    "name": "Nabeel - Freelance Digital Marketer & Web Developer",
+    "description": "Freelance digital marketing strategist and web developer based in Bangalore & Kerala focusing on lead generation and revenue growth.",
     "url": siteConfig.metadata.baseUrl,
-    "telephone": "", // Add if available
+    "telephone": "+918111830647",
+    "email": "nabeelfahad41@gmail.com",
     "address": [
       {
         "@type": "PostalAddress",
@@ -49,15 +50,16 @@ const JsonLd = () => {
         "addressCountry": "IN"
       }
     ],
-    "serviceType": "Digital Marketing",
+    "serviceType": ["Digital Marketing", "SEO", "Web Development", "Performance Marketing"],
     "provider": {
       "@type": "Person",
-      "name": "Nabeel"
+      "name": "Nabeel",
+      "url": siteConfig.metadata.baseUrl
     },
-    "areaServed": ["Bangalore", "Kerala"],
+    "areaServed": ["Bangalore", "Kerala", "India"],
     "sameAs": [
-      "https://www.linkedin.com/in/nabeel", // Placeholders
-      "https://www.instagram.com/nabeel"
+      "https://www.linkedin.com/in/nabeelfahad",
+      "https://www.instagram.com/nabeelfahad"
     ]
   };
 

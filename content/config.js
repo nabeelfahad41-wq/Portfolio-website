@@ -1,8 +1,8 @@
 export const siteConfig = {
     metadata: {
-        title: "Adlyst - Digital Marketing Agency",
-        description: "We combine content, management, and paid media to help brands grow and convert on the social platforms that matter most to you.",
-        baseUrl: "https://adlyst.agency", // Replace with actual domain
+        title: "Nabeel - Freelance Digital Marketer & Web Developer",
+        description: "We combine strategy, SEO, web development, and performance marketing to help brands convert and scale online.",
+        baseUrl: "https://www.nabeelscale.com",
     },
     navigation: [
         { name: "Home", href: "/" },
@@ -17,6 +17,6 @@ export const siteConfig = {
         linkedin: "https://linkedin.com",
     },
     footer: {
-        copyright: "© 2026 Adlyst. All rights reserved.",
+        copyright: "© 2026 Nabeel. All rights reserved.",
     }
 };

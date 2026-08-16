@@ -83,8 +83,8 @@ export default function FreelanceSocialMediaMarketer() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://adlyst.agency" },
-      { "@type": "ListItem", position: 2, name: "Freelance Social Media Marketer", item: "https://adlyst.agency/freelance-social-media-marketer" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.nabeelscale.com" },
+      { "@type": "ListItem", position: 2, name: "Freelance Social Media Marketer", item: "https://www.nabeelscale.com/freelance-social-media-marketer" },
     ],
   };
 
@@ -92,12 +92,12 @@ export default function FreelanceSocialMediaMarketer() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Nabeel",
-    url: "https://adlyst.agency/freelance-social-media-marketer",
+    url: "https://www.nabeelscale.com/freelance-social-media-marketer",
     jobTitle: "Freelance Social Media Marketer",
     description: "Freelance social media marketer with proven B2B growth. Scaled LinkedIn followers 2X in 6 months. Expert in social media strategy & ads for businesses in Bangalore & Kerala.",
     knowsAbout: ["Social Media Strategy", "LinkedIn Marketing", "Instagram Marketing", "Facebook Marketing", "Meta Ads", "LinkedIn Ads", "Lead Generation", "Content Marketing", "B2B Marketing"],
     areaServed: ["Bangalore", "Kerala"],
-    sameAs: ["https://adlyst.agency/freelance-social-media-marketer"],
+    sameAs: ["https://www.nabeelscale.com/freelance-social-media-marketer"],
   };
 
   const faqSchema = {

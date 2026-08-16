@@ -53,7 +53,7 @@ export default function SEOBangalore() {
       );
 
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -69,7 +69,7 @@ export default function SEOBangalore() {
         );
       });
 
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -96,19 +96,19 @@ export default function SEOBangalore() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "SEO Freelancer",
-        "item": "https://www.adlyst.in/seo-freelancer"
+        "item": "https://www.nabeelscale.com/seo-freelancer"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "SEO Freelancer in Bangalore",
-        "item": "https://www.adlyst.in/seo-freelancer-in-bangalore"
+        "item": "https://www.nabeelscale.com/seo-freelancer-in-bangalore"
       }
     ]
   };
@@ -117,7 +117,7 @@ export default function SEOBangalore() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "SEO Freelancer in Bangalore",
-    "url": "https://www.adlyst.in/seo-freelancer-in-bangalore",
+    "url": "https://www.nabeelscale.com/seo-freelancer-in-bangalore",
     "jobTitle": "Freelance SEO Expert Bangalore",
     "description": "3+ years professional experience working as an SEO freelancer in Bangalore delivering execution-focused strategies.",
     "areaServed": {
@@ -125,7 +125,7 @@ export default function SEOBangalore() {
       "name": "Bangalore"
     },
     "sameAs": [
-      "https://www.adlyst.in/seo-freelancer-in-bangalore"
+      "https://www.nabeelscale.com/seo-freelancer-in-bangalore"
     ]
   };
 
@@ -210,8 +210,8 @@ export default function SEOBangalore() {
                 { name: "Bangalore", path: "/seo-freelancer-in-bangalore" },
                 { name: "Kerala", path: "/seo-freelancer-in-kerala" }
               ].map((loc, i) => (
-                <Link 
-                  key={i} 
+                <Link
+                  key={i}
                   href={loc.path}
                   className={`text-[10px] sm:text-xs font-semibold hover:text-[#43A047] transition-all flex items-center gap-1 group whitespace-nowrap ${loc.name === 'Bangalore' ? 'text-[#43A047]' : 'text-gray-500'}`}
                 >
@@ -227,37 +227,37 @@ export default function SEOBangalore() {
             <div className="relative w-[312px] h-[422px] sm:w-[384px] sm:h-[520px] lg:w-[480px] lg:h-[650px] mx-auto">
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google keyword rankings by a verified SEO freelancer in Bangalore" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google keyword rankings by a verified SEO freelancer in Bangalore" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo result of nabeel.png" alt="Google SEO results and organic traffic growth in Bangalore market" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo result of nabeel.png" alt="Google SEO results and organic traffic growth in Bangalore market" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo ranking proof of nabeel's work.png" alt="Demonstration of Bangalore local SEO success and growth metrics" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo ranking proof of nabeel's work.png" alt="Demonstration of Bangalore local SEO success and growth metrics" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
       {/* --- ABOUT ME (Bangalore Context) --- */}
       <section className="reveal-section py-20 md:py-32 px-6 bg-gradient-to-br from-white via-gray-50 to-white text-black overflow-hidden relative">
         <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000000 1px, transparent 1px), linear-gradient(to bottom, #000000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#43A047] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-3 block">Real Expertise</span>
@@ -265,17 +265,17 @@ export default function SEOBangalore() {
               Freelance SEO Expert in Bangalore <br className="hidden sm:block" /> With Real Experience
             </h2>
             <p className="text-xl text-gray-600 font-light leading-relaxed">
-              Working in Bangalore has shaped my approach to SEO. I've worked in environments where communication must be actionable and deadlines actually matter. 
+              Working in Bangalore has shaped my approach to SEO. I've worked in environments where communication must be actionable and deadlines actually matter.
             </p>
           </div>
 
           <div className="p-10 rounded-[2rem] bg-white border border-gray-100 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
-            
+
             <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
               <Briefcase className="text-[#43A047] w-6 h-6" /> Local Insight & Execution Readiness
             </h3>
-            
+
             <div className="grid sm:grid-cols-2 gap-6 mb-8 text-gray-600">
               <div className="flex gap-4">
                 <Target className="w-6 h-6 text-[#43A047] shrink-0" />
@@ -294,7 +294,7 @@ export default function SEOBangalore() {
                 <p>Long-term approach focused on structured, scalable growth components.</p>
               </div>
             </div>
-            
+
             <div className="p-6 rounded-2xl bg-gray-50 border-l-4 border-[#43A047]">
               <p className="text-lg font-medium italic text-gray-800">
                 "Results are expected, not optional. In a market this fast-paced, I focus on practical and execution-ready SEO processes."
@@ -313,19 +313,19 @@ export default function SEOBangalore() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-8">
-            <ApproachCard 
-              num="1" 
-              title="Objective-Driven SEO" 
+            <ApproachCard
+              num="1"
+              title="Objective-Driven SEO"
               desc="Every SEO activity is tied to clear goals like lead generation, traffic growth, and keyword visibility. No random actions — only purpose-driven execution."
             />
-            <ApproachCard 
-              num="2" 
-              title="Clear Communication" 
+            <ApproachCard
+              num="2"
+              title="Clear Communication"
               desc="I ensure you understand what is being done and why. Through regular updates on performance, I effectively bridge the biggest gap in modern SEO consulting."
             />
-            <ApproachCard 
-              num="3" 
-              title="Execution-Focused" 
+            <ApproachCard
+              num="3"
+              title="Execution-Focused"
               desc="Many experts stop at planning. I focus on execution — from landing page creation to technical fixes and deep on-page optimizations."
             />
           </div>
@@ -391,7 +391,7 @@ export default function SEOBangalore() {
                 Professional Background
               </div>
               <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-                Experience That <br/> Builds <span className="text-[#43A047]">Trust</span>
+                Experience That <br /> Builds <span className="text-[#43A047]">Trust</span>
               </h2>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                 With 3+ years of professional experience in Bangalore, I understand how to align high-level SEO methodologies directly with the expectations of fast-paced regional businesses and established commercial brands.
@@ -404,12 +404,12 @@ export default function SEOBangalore() {
                 <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 className="w-5 h-5 mt-0.5 text-[#43A047] shrink-0" /> Reliable delivery of results within highly competitive digital environments.</li>
               </ul>
             </div>
-            
+
             <div className="w-full lg:w-1/2">
               <div className="bg-[#0a0a0a] rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#43A047]/20 blur-[50px]"></div>
                 <h3 className="text-2xl font-bold mb-8">Why Choose Me? <span className="text-gray-400 font-normal text-lg"></span></h3>
-                
+
                 <div className="flex flex-col gap-6">
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4">
                     <TrendingUp className="w-8 h-8 text-[#43A047] shrink-0" />

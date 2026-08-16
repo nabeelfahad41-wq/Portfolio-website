@@ -3,13 +3,13 @@ export const metadata = {
   description:
     "Get results with a freelance performance marketer specializing in Meta Ads. Proven campaigns for interior, resorts & eCommerce. Serving Bangalore & Kerala businesses.",
   alternates: {
-    canonical: "https://adlyst.agency/freelance-performance-marketer",
+    canonical: "https://www.nabeelscale.com/freelance-performance-marketer",
   },
   openGraph: {
     title: "Freelance Performance Marketer in Bangalore & Kerala | Meta Ads Specialist",
     description:
       "Get results with a freelance performance marketer specializing in Meta Ads. Proven campaigns for interior, resorts & eCommerce. Serving Bangalore & Kerala businesses.",
-    url: "https://adlyst.agency/freelance-performance-marketer",
+    url: "https://www.nabeelscale.com/freelance-performance-marketer",
     type: "website",
   },
 };

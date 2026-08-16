@@ -55,7 +55,7 @@ export default function SEOFreelancer() {
 
       // Section Fade-ins
       gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: {
@@ -72,7 +72,7 @@ export default function SEOFreelancer() {
       });
 
       // Service Cards Stagger
-      gsap.fromTo(".service-card", 
+      gsap.fromTo(".service-card",
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
@@ -100,13 +100,13 @@ export default function SEOFreelancer() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.adlyst.in"
+        "item": "https://www.nabeelscale.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "SEO Freelancer",
-        "item": "https://www.adlyst.in/seo-freelancer"
+        "item": "https://www.nabeelscale.com/seo-freelancer"
       }
     ]
   };
@@ -114,12 +114,12 @@ export default function SEOFreelancer() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Freelance SEO Specialist",
-    "url": "https://www.adlyst.in/seo-freelancer",
+    "name": "Nabeel - Freelance SEO Specialist",
+    "url": "https://www.nabeelscale.com/seo-freelancer",
     "jobTitle": "Freelance SEO Specialist & Consultant",
     "description": "Hire an SEO freelancer to grow rankings, traffic & leads. Freelance SEO specialist offering technical SEO, content strategy & complete optimization.",
     "sameAs": [
-      "https://www.adlyst.in/seo-freelancer"
+      "https://www.nabeelscale.com/seo-freelancer"
     ]
   };
 
@@ -206,8 +206,8 @@ export default function SEOFreelancer() {
                 { name: "Bangalore", path: "/seo-freelancer-in-bangalore" },
                 { name: "Kerala", path: "/seo-freelancer-in-kerala" }
               ].map((loc, i) => (
-                <Link 
-                  key={i} 
+                <Link
+                  key={i}
                   href={loc.path}
                   className="text-[10px] sm:text-xs font-semibold text-gray-500 hover:text-[#43A047] transition-all flex items-center gap-1 group whitespace-nowrap"
                 >
@@ -223,39 +223,39 @@ export default function SEOFreelancer() {
             <div className="relative w-[312px] h-[422px] sm:w-[384px] sm:h-[520px] lg:w-[480px] lg:h-[650px] mx-auto">
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
 
-              {/* Card 1 */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google Search Console keyword ranking screenshot demonstrating Nabeel's proven SEO results and high volume organic traffic" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                {/* Card 1 */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/keyword ranking screenshot of nabeel's work.png" alt="Google Search Console keyword ranking screenshot demonstrating Nabeel's proven SEO results and high volume organic traffic" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              {/* Card 2 */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo result screenshort of trasccon.png" alt="Google SEO results and organic traffic growth graph" className="w-full h-full object-cover object-top" loading="lazy" />
-              </div>
+                {/* Card 2 */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo result screenshort of trasccon.png" alt="Google SEO results and organic traffic growth graph" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
 
-              {/* Card 3 */}
-              <div
-                className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
-                style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
-              >
-                <img src="/assets/seo ranking proof of nabeel's work.png" alt="Data-driven SEO ranking proof showcasing significant search engine visibility improvements by freelance SEO specialist Nabeel" className="w-full h-full object-cover object-top" loading="lazy" />
+                {/* Card 3 */}
+                <div
+                  className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
+                  style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
+                >
+                  <img src="/assets/seo ranking proof of nabeel's work.png" alt="Data-driven SEO ranking proof showcasing significant search engine visibility improvements by freelance SEO specialist Nabeel" className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
       {/* --- ABOUT ME --- */}
       <section className="reveal-section py-20 md:py-32 px-6 bg-gradient-to-br from-white via-gray-50 to-white text-black overflow-hidden relative">
         <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000000 1px, transparent 1px), linear-gradient(to bottom, #000000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#43A047] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-3 block">About Me</span>
@@ -269,11 +269,11 @@ export default function SEOFreelancer() {
 
           <div className="p-10 rounded-[2rem] bg-white border border-gray-100 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
-            
+
             <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-3">
               <Briefcase className="text-[#43A047] w-6 h-6" /> Proven Impact at Trasccon
             </h3>
-            
+
             <div className="grid sm:grid-cols-2 gap-6 mb-8 text-gray-600">
               <div className="flex gap-4">
                 <Target className="w-6 h-6 text-[#43A047] shrink-0" />
@@ -292,7 +292,7 @@ export default function SEOFreelancer() {
                 <p>Focused on technical SEO, internal linking, and scalable architecture.</p>
               </div>
             </div>
-            
+
             <div className="p-6 rounded-2xl bg-gray-50 border-l-4 border-[#43A047]">
               <p className="text-lg font-medium italic text-gray-800">
                 "Unlike generic consultants, I don’t rely on theory — I execute strategies that align with how search engines actually evaluate websites."
@@ -311,23 +311,23 @@ export default function SEOFreelancer() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-8">
-            <ApproachCard 
-              num="1" 
-              title="Search Intent Mapping" 
+            <ApproachCard
+              num="1"
+              title="Search Intent Mapping"
               desc="Every keyword is mapped to user intent (informational, commercial, transactional) to ensure higher ranking probability and conversion rate."
             />
-            <ApproachCard 
-              num="2" 
-              title="Topical Authority Building" 
+            <ApproachCard
+              num="2"
+              title="Topical Authority Building"
               desc="Instead of isolated pages, I create content clusters that signal expertise and improve domain authority."
             />
-            <ApproachCard 
-              num="3" 
-              title="Technical SEO Foundation" 
+            <ApproachCard
+              num="3"
+              title="Technical SEO Foundation"
               desc="Site structure optimization, crawlability & indexation fixes, and page speed & Core Web Vitals improvements."
             />
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#43A047]/50 transition-all flex flex-col h-full">
               <span className="text-[#43A047] text-5xl font-black opacity-20 mb-[-20px]">4</span>
@@ -340,7 +340,7 @@ export default function SEOFreelancer() {
                 <li className="flex items-center gap-3 text-gray-300"><CheckCircle2 className="w-5 h-5 text-[#43A047]" /> Trust (clear, accurate, useful information)</li>
               </ul>
             </div>
-            
+
             <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#43A047]/50 transition-all flex flex-col h-full">
               <span className="text-[#43A047] text-5xl font-black opacity-20 mb-[-20px]">5</span>
               <h3 className="text-2xl font-bold text-white mb-4 relative z-10">Scalable Link Building</h3>
@@ -418,12 +418,12 @@ export default function SEOFreelancer() {
                 <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 className="w-5 h-5 mt-0.5 text-[#43A047] shrink-0" /> Implemented search intent mapping across core pages.</li>
               </ul>
             </div>
-            
+
             <div className="w-full lg:w-1/2">
               <div className="bg-[#0a0a0a] rounded-[2rem] p-10 text-white shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#43A047]/20 blur-[50px]"></div>
                 <h3 className="text-2xl font-bold mb-8">Results Achieved <span className="text-gray-400 font-normal text-lg">(Within 5 Months)</span></h3>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
                     <p className="text-4xl font-black text-[#43A047] mb-2">40+</p>
@@ -466,16 +466,16 @@ export default function SEOFreelancer() {
 
           <div className="max-w-4xl mx-auto p-10 rounded-[2.5rem] bg-gradient-to-br from-[#1a1a1a] to-black border border-white/10 text-center relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-32 bg-[#43A047]/20 blur-[80px]"></div>
-            
+
             <div className="inline-block p-4 rounded-full bg-[#43A047]/10 text-[#43A047] mb-6 relative z-10">
               <Lock className="w-8 h-8" />
             </div>
-            
+
             <h3 className="text-3xl font-bold mb-6 text-white relative z-10">🎯 MBA-Driven Strategic Advantage</h3>
             <p className="text-gray-400 text-lg mb-8 leading-relaxed relative z-10">
               Backed by an MBA, I understand customer behavior, decision-making, and market positioning. I don’t just rank pages — I align SEO with business goals and customer intent.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
               <div className="flex items-center gap-2 text-gray-300 bg-white/5 px-6 py-3 rounded-full border border-white/10 text-sm font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[#43A047]" /> Connect search data with buyer psychology
@@ -497,14 +497,14 @@ export default function SEOFreelancer() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <TestimonialCard 
-              quote="Nabeel took complete ownership of our SEO strategy and execution. His structured approach to landing pages and keyword targeting gave us a strong foundation to compete in our industry." 
+            <TestimonialCard
+              quote="Nabeel took complete ownership of our SEO strategy and execution. His structured approach to landing pages and keyword targeting gave us a strong foundation to compete in our industry."
             />
-            <TestimonialCard 
-              quote="What stood out was his ability to align SEO with real business goals, not just rankings." 
+            <TestimonialCard
+              quote="What stood out was his ability to align SEO with real business goals, not just rankings."
             />
-            <TestimonialCard 
-              quote="His understanding of technical SEO and content strategy helped us build a scalable digital presence." 
+            <TestimonialCard
+              quote="His understanding of technical SEO and content strategy helped us build a scalable digital presence."
             />
           </div>
         </div>

@@ -80,8 +80,8 @@ export default function FreelancePerformanceMarketer() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://adlyst.agency" },
-      { "@type": "ListItem", position: 2, name: "Freelance Performance Marketer", item: "https://adlyst.agency/freelance-performance-marketer" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.nabeelscale.com" },
+      { "@type": "ListItem", position: 2, name: "Freelance Performance Marketer", item: "https://www.nabeelscale.com/freelance-performance-marketer" },
     ],
   };
 
@@ -89,12 +89,12 @@ export default function FreelancePerformanceMarketer() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Nabeel",
-    url: "https://adlyst.agency/freelance-performance-marketer",
+    url: "https://www.nabeelscale.com/freelance-performance-marketer",
     jobTitle: "Freelance Performance Marketer",
     description: "Freelance performance marketer specializing in Meta Ads (Facebook & Instagram). Serving Bangalore & Kerala businesses with ROI-driven lead generation campaigns.",
     knowsAbout: ["Meta Ads", "Facebook Ads", "Instagram Ads", "Lead Generation", "Performance Marketing", "A/B Testing", "WhatsApp Marketing", "Retargeting"],
     areaServed: ["Bangalore", "Kerala"],
-    sameAs: ["https://adlyst.agency/freelance-performance-marketer"],
+    sameAs: ["https://www.nabeelscale.com/freelance-performance-marketer"],
   };
 
   const faqSchema = {

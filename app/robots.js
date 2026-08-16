@@ -7,6 +7,6 @@ export default function Robot() {
         },
         sitemap: process.env.NEXT_PUBLIC_BASE_URL
             ? `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`
-            : 'https://adlyst.agency/sitemap.xml',
+            : 'https://www.nabeelscale.com/sitemap.xml',
     }
 }
