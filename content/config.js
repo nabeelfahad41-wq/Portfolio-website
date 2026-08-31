@@ -14,8 +14,8 @@ export const siteConfig = {
     socials: {
         facebook: "https://facebook.com",
         twitter: "https://twitter.com",
-        instagram: "https://instagram.com",
-        linkedin: "https://linkedin.com",
+        instagram: "https://www.instagram.com/fahad_nbl/",
+        linkedin: "https://www.linkedin.com/in/fahad-nabeel-269996267/",
     },
     footer: {
         copyright: "© 2026 Nabeel. All rights reserved.",

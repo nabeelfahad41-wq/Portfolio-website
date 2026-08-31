@@ -58,8 +58,8 @@ const JsonLd = () => {
     },
     "areaServed": ["Bangalore", "Kerala", "India"],
     "sameAs": [
-      "https://www.linkedin.com/in/nabeelfahad",
-      "https://www.instagram.com/nabeelfahad"
+      "https://www.linkedin.com/in/fahad-nabeel-269996267/",
+      "https://www.instagram.com/fahad_nbl/"
     ]
   };
 

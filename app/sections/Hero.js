@@ -42,18 +42,40 @@ const HeroSection = () => {
 
   const SocialIcons = ({ className }) => (
     <div className={`flex items-center gap-5 text-[#ffffff] ${className}`}>
-      <div className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity">
+      <a
+        href="https://wa.me/918111830647"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity"
+      >
         <MessageCircle className="w-full h-full" strokeWidth={1.5} />
-      </div>
-      <div className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity">
+      </a>
+      <a
+        href="https://www.instagram.com/fahad_nbl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity"
+      >
         <Instagram className="w-full h-full" strokeWidth={1.5} />
-      </div>
-      <div className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity">
+      </a>
+      <a
+        href="https://www.linkedin.com/in/fahad-nabeel-269996267/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity"
+      >
         <Linkedin className="w-full h-full" strokeWidth={1.5} />
-      </div>
-      <div className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity">
+      </a>
+      <a
+        href="mailto:nabeelfahad41@gmail.com"
+        aria-label="Email"
+        className="w-7 h-7 flex items-center justify-center cursor-pointer hover:opacity-75 transition-opacity"
+      >
         <AtSign className="w-full h-full" strokeWidth={1.5} />
-      </div>
+      </a>
     </div>
   );
 
