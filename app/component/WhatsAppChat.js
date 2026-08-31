@@ -26,6 +26,10 @@ export default function WhatsAppChat() {
     const [showOnMobile, setShowOnMobile] = useState(true);
     const inputRef = useRef(null);
 
+    if (pathname?.startsWith('/studio')) {
+        return null;
+    }
+
     // Scroll visibility logic for Home Page hero section
     useEffect(() => {
         const handleScroll = () => {
@@ -96,7 +100,7 @@ export default function WhatsAppChat() {
             <button
                 onClick={() => setOpen((o) => !o)}
                 aria-label="Open WhatsApp Chat"
-                className={`fixed bottom-6 right-6 z-[999] flex items-center justify-center transition-all duration-500 hover:scale-105 active:scale-95 focus:outline-none ${pulse && !open ? "wa-fab-pulse" : ""} ${open ? "w-14 h-14 md:w-16 md:h-16 rounded-full" : "rounded-full p-1.5 pr-5 md:pr-6"} ${!showOnMobile ? "opacity-0 translate-y-10 pointer-events-none" : "opacity-100 translate-y-0"}`}
+                className={`fixed bottom-8 right-6 md:bottom-10 md:right-8 z-[999] flex items-center justify-center transition-all duration-500 hover:scale-105 active:scale-95 focus:outline-none ${pulse && !open ? "wa-fab-pulse" : ""} ${open ? "w-14 h-14 md:w-16 md:h-16 rounded-full" : "rounded-full p-1.5 pr-5 md:pr-6"} ${!showOnMobile ? "opacity-0 translate-y-10 pointer-events-none" : "opacity-100 translate-y-0"}`}
                 style={{ background: open ? "#128C7E" : "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 12px 40px rgba(37,211,102,0.35)" }}
             >
                 {open ? (
@@ -127,7 +131,7 @@ export default function WhatsAppChat() {
             {/* ── Chat Panel ── */}
             {open && (
                 <div
-                    className="wa-widget-enter fixed bottom-24 right-6 z-[998] w-[340px] max-w-[calc(100vw-2rem)] rounded-2xl overflow-hidden flex flex-col"
+                    className="wa-widget-enter fixed bottom-28 right-6 md:bottom-32 md:right-8 z-[998] w-[340px] max-w-[calc(100vw-2rem)] rounded-2xl overflow-hidden flex flex-col"
                     style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.06)" }}
                 >
                     {/* Header */}

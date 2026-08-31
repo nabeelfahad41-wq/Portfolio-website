@@ -6,17 +6,21 @@ import { siteConfig } from "@/content/config";
 export default function Navbar() {
   const pathname = usePathname();
 
+  if (pathname?.startsWith('/studio')) {
+    return null;
+  }
+
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[999] w-[92%] sm:w-[80%] md:w-auto">
+    <nav className="fixed top-8 md:top-10 left-1/2 -translate-x-1/2 z-[999] w-[92%] sm:w-[80%] md:w-auto">
       <div className="relative bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100/50 px-6 py-4 md:px-10 flex items-center justify-center w-full overflow-hidden">
-        
+
         {/* Subtle nav grid background */}
         <div
-            className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none"
-            style={{
-                backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
-                backgroundSize: '16px 16px'
-            }}
+          className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+            backgroundSize: '16px 16px'
+          }}
         />
 
         {/* Logo/Home Icon - Hidden on Mobile */}
@@ -31,14 +35,13 @@ export default function Navbar() {
           {siteConfig.navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <Link 
-                key={item.name} 
-                href={item.href} 
-                className={`transition-all duration-300 ${
-                  isActive 
-                    ? 'text-green-600 scale-110 drop-shadow-sm' 
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`transition-all duration-300 ${isActive
+                    ? 'text-green-600 scale-110 drop-shadow-sm'
                     : 'text-gray-600 hover:text-green-600'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>

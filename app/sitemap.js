@@ -1,6 +1,7 @@
 import { siteConfig } from "@/content/config";
+import { getAllPostSlugs } from "@/sanity/lib/fetchData";
 
-export default function sitemap() {
+export default async function sitemap() {
     const baseUrl = siteConfig.metadata.baseUrl;
 
     // Static routes
@@ -30,8 +31,23 @@ export default function sitemap() {
         priority: 0.8,
     }));
 
+    // Dynamic Sanity blog posts
+    let blogPostRoutes = [];
+    try {
+        const slugs = await getAllPostSlugs();
+        blogPostRoutes = slugs.map((slug) => ({
+            url: `${baseUrl}/blog/${slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+        }));
+    } catch (e) {
+        console.warn('Sitemap blog post fetching warning:', e?.message);
+    }
+
     return [
         ...routes,
         ...landingPages,
+        ...blogPostRoutes,
     ];
 }
