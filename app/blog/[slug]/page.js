@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { getPostBySlug, getAllPostSlugs } from '@/sanity/lib/fetchData';
 import { urlForImage } from '@/sanity/lib/image';
 import PortableTextRenderer from '@/app/component/PortableTextRenderer';
@@ -205,74 +206,88 @@ export default async function BlogPostPage({ params }) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
             />
 
-            <article className="bg-white min-h-screen pt-32 pb-24 text-gray-900 border-t border-gray-100">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <article className="bg-black text-white min-h-screen font-sans selection:bg-[#43A047] selection:text-white relative">
+                {/* Page-wide Background Enhancements */}
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    {/* Green/Black Gradient */}
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(67,160,71,0.15),transparent_70%)]" />
+                    {/* Small Grid Lines */}
+                    <div
+                        className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage:
+                                'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
+                            backgroundSize: '40px 40px',
+                        }}
+                    />
+                </div>
+
+                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-24">
 
                     {/* Breadcrumb Navigation */}
-                    <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-8 font-medium overflow-x-auto whitespace-nowrap scrollbar-none">
-                        <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
+                    <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-400 mb-8 font-medium overflow-x-auto whitespace-nowrap scrollbar-none">
+                        <Link href="/" className="hover:text-[#43A047] transition-colors">Home</Link>
                         <span>/</span>
-                        <Link href="/blog" className="hover:text-green-600 transition-colors">Blog</Link>
+                        <Link href="/blog" className="hover:text-[#43A047] transition-colors">Blog</Link>
                         {post.category && (
                             <>
                                 <span>/</span>
-                                <span className="text-green-700 font-semibold">{post.category.title}</span>
+                                <span className="text-[#43A047] font-semibold">{post.category.title}</span>
                             </>
                         )}
                         <span>/</span>
-                        <span className="text-gray-400 truncate max-w-[200px]">{post.title}</span>
+                        <span className="text-gray-500 truncate max-w-[200px]">{post.title}</span>
                     </nav>
 
                     {/* Article Header */}
                     <header className="mb-10">
                         {post.category && (
-                            <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-5 border border-green-200/80 shadow-2xs">
+                            <span className="inline-block bg-[#43A047]/10 text-[#43A047] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-5 border border-[#43A047]/30 shadow-2xs">
                                 {post.category.title}
                             </span>
                         )}
 
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.18] mb-6">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.18] mb-6">
                             {post.title}
                         </h1>
 
                         {post.excerpt && (
-                            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 font-normal">
+                            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-8 font-light">
                                 {post.excerpt}
                             </p>
                         )}
 
                         {/* Author & Reading Meta Bar */}
-                        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100 text-sm text-gray-600">
+                        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-white/10 text-sm text-gray-400">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-green-600 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                                <div className="w-10 h-10 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-bold flex items-center justify-center text-sm shadow-xs">
                                     {post.author?.name ? post.author.name.charAt(0) : 'N'}
                                 </div>
                                 <div>
-                                    <div className="font-bold text-gray-900">{post.author?.name || 'Nabeel'}</div>
+                                    <div className="font-bold text-white">{post.author?.name || 'Nabeel'}</div>
                                     <div className="text-xs text-gray-500">Digital Marketer & Developer</div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-3 text-xs font-medium text-gray-500">
+                            <div className="flex items-center gap-3 text-xs font-medium text-gray-400">
                                 {formattedDate && (
                                     <div className="flex items-center gap-1.5">
-                                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
+                                        <Calendar className="w-4 h-4 text-[#43A047]" />
                                         <span>{formattedDate}</span>
                                     </div>
                                 )}
                                 <span>•</span>
-                                <span className="text-green-700 bg-green-50 px-2.5 py-1 rounded-md font-bold border border-green-200/60">
-                                    {readTime}
-                                </span>
+                                <div className="flex items-center gap-1 text-[#43A047] bg-[#43A047]/10 px-2.5 py-1 rounded-md font-bold border border-[#43A047]/30">
+                                    <Clock className="w-3.5 h-3.5" />
+                                    <span>{readTime}</span>
+                                </div>
                             </div>
                         </div>
                     </header>
 
                     {/* Featured Image */}
                     {mainImageSrc && (
-                        <div className="relative w-full aspect-[16/9] mb-12 overflow-hidden rounded-2xl border border-gray-200/90 shadow-md">
+                        <div className="relative w-full aspect-[16/9] mb-12 overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-white/5">
                             <Image
                                 src={mainImageSrc}
                                 alt={post.mainImage?.alt || post.title}
@@ -289,15 +304,15 @@ export default async function BlogPostPage({ params }) {
                     </div>
 
                     {/* Post Footer & Author Card */}
-                    <footer className="max-w-3xl mx-auto mt-16 pt-10 border-t border-gray-200">
+                    <footer className="max-w-3xl mx-auto mt-16 pt-10 border-t border-white/10">
                         {post.author && (
-                            <div className="bg-gray-50/80 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-10 shadow-xs">
-                                <div className="w-14 h-14 rounded-full bg-green-600 text-white font-extrabold flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                            <div className="bg-white/[0.03] p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-10 shadow-sm">
+                                <div className="w-14 h-14 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-extrabold flex items-center justify-center text-xl flex-shrink-0">
                                     {post.author.name.charAt(0)}
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-900 text-lg">Written by {post.author.name}</h3>
-                                    <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                                    <h3 className="font-bold text-white text-lg">Written by {post.author.name}</h3>
+                                    <p className="text-sm text-gray-400 mt-1 leading-relaxed font-light">
                                         {post.author.bio || 'Combining strategy, performance marketing, SEO, and custom web development to turn digital presence into real revenue.'}
                                     </p>
                                 </div>
@@ -307,11 +322,9 @@ export default async function BlogPostPage({ params }) {
                         <div className="flex justify-between items-center">
                             <Link
                                 href="/blog"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-900 hover:bg-green-600 text-white font-bold text-xs sm:text-sm transition-all shadow-xs"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#43A047] hover:bg-[#66BB6A] text-black font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md"
                             >
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                                </svg>
+                                <ArrowLeft className="w-4 h-4" />
                                 Back to All Articles
                             </Link>
                         </div>
