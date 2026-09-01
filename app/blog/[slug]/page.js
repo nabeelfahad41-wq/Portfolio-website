@@ -285,7 +285,7 @@ export default async function BlogPostPage({ params }) {
                         </div>
                     </header>
 
-                    {/* Featured Image */}
+                    {/* Featured Image - Optimized for LCP */}
                     {mainImageSrc && (
                         <div className="relative w-full aspect-[16/9] mb-12 overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-white/5">
                             <Image
@@ -293,6 +293,9 @@ export default async function BlogPostPage({ params }) {
                                 alt={post.mainImage?.alt || post.title}
                                 fill
                                 priority
+                                fetchPriority="high"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 768px, 800px"
+                                quality={80}
                                 className="object-cover"
                             />
                         </div>

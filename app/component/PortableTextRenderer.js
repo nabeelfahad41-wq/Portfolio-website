@@ -88,6 +88,9 @@ const components = {
                             src={imageUrl}
                             alt={value.alt || 'Blog content image'}
                             fill
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 768px"
+                            quality={80}
                             className="object-cover"
                         />
                     </div>

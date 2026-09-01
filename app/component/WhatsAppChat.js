@@ -20,13 +20,39 @@ const CHAT_HISTORY = [
 
 export default function WhatsAppChat() {
     const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState(PRE_FILLED);
     const [pulse, setPulse] = useState(true);
     const [showOnMobile, setShowOnMobile] = useState(true);
     const inputRef = useRef(null);
 
-    if (pathname?.startsWith('/studio')) {
+    // Defer widget mounting to avoid blocking initial FCP / LCP rendering thread
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const timer = setTimeout(() => {
+                setMounted(true);
+            }, 2500);
+
+            const handleUserInteraction = () => {
+                setMounted(true);
+                clearTimeout(timer);
+                window.removeEventListener("pointerdown", handleUserInteraction);
+                window.removeEventListener("scroll", handleUserInteraction);
+            };
+
+            window.addEventListener("pointerdown", handleUserInteraction, { passive: true, once: true });
+            window.addEventListener("scroll", handleUserInteraction, { passive: true, once: true });
+
+            return () => {
+                clearTimeout(timer);
+                window.removeEventListener("pointerdown", handleUserInteraction);
+                window.removeEventListener("scroll", handleUserInteraction);
+            };
+        }
+    }, []);
+
+    if (pathname?.startsWith('/studio') || !mounted) {
         return null;
     }
 
