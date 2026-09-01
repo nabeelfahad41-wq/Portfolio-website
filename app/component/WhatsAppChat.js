@@ -52,14 +52,11 @@ export default function WhatsAppChat() {
         }
     }, []);
 
-    if (pathname?.startsWith('/studio') || !mounted) {
-        return null;
-    }
-
     // Scroll visibility logic for Home Page hero section
     useEffect(() => {
+        if (!mounted) return;
         const handleScroll = () => {
-            if (pathname === '/' && window.innerWidth < 768) {
+            if (pathname === '/' && typeof window !== 'undefined' && window.innerWidth < 768) {
                 setShowOnMobile(window.scrollY > 300);
             } else {
                 setShowOnMobile(true);
@@ -74,20 +71,27 @@ export default function WhatsAppChat() {
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleScroll);
         };
-    }, [pathname]);
+    }, [pathname, mounted]);
 
     // Stop the initial attention pulse after 4 seconds
     useEffect(() => {
+        if (!mounted) return;
         const t = setTimeout(() => setPulse(false), 4000);
         return () => clearTimeout(t);
-    }, []);
+    }, [mounted]);
 
     // Focus the textarea when chat opens
     useEffect(() => {
         if (open && inputRef.current) {
-            setTimeout(() => inputRef.current?.focus(), 200);
+            const timer = setTimeout(() => inputRef.current?.focus(), 200);
+            return () => clearTimeout(timer);
         }
     }, [open]);
+
+    // Early return ONLY after all hooks are defined
+    if (pathname?.startsWith('/studio') || !mounted) {
+        return null;
+    }
 
     const handleSend = () => {
         if (!message.trim()) return;

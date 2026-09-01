@@ -64,9 +64,10 @@ const components = {
         link: ({ value, children }) => {
             const target = value?.blank ? '_blank' : undefined;
             const rel = value?.blank ? 'noopener noreferrer' : undefined;
+            const href = value?.href || '#';
             return (
                 <a
-                    href={value?.href}
+                    href={href}
                     target={target}
                     rel={rel}
                     className="text-[#66BB6A] font-semibold underline underline-offset-4 hover:text-white transition-colors"
@@ -79,7 +80,12 @@ const components = {
     types: {
         image: ({ value }) => {
             if (!value) return null;
-            const imageUrl = value?.asset ? urlForImage(value)?.url() : value?.url;
+            let imageUrl = null;
+            try {
+                imageUrl = value?.asset ? urlForImage(value)?.url() : value?.url;
+            } catch (e) {
+                imageUrl = value?.url || null;
+            }
             if (!imageUrl) return null;
             return (
                 <figure className="my-10 overflow-hidden rounded-2xl shadow-xl border border-white/10 bg-white/5">
@@ -103,7 +109,7 @@ const components = {
             );
         },
         table: ({ value }) => {
-            if (!value || !value.rows || value.rows.length === 0) return null;
+            if (!value || !Array.isArray(value.rows) || value.rows.length === 0) return null;
             const hasMultipleRows = value.rows.length > 1;
             const headerRow = hasMultipleRows ? value.rows[0] : null;
             const bodyRows = hasMultipleRows ? value.rows.slice(1) : value.rows;
@@ -114,29 +120,31 @@ const components = {
                         {headerRow && (
                             <thead className="bg-white/15 border-b border-white/20">
                                 <tr>
-                                    {headerRow.cells?.map((cell, idx) => (
-                                        <th
-                                            key={idx}
-                                            scope="col"
-                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-extrabold text-white uppercase tracking-wider border-r last:border-r-0 border-white/20"
-                                        >
-                                            {cell}
-                                        </th>
-                                    ))}
+                                    {Array.isArray(headerRow.cells) &&
+                                        headerRow.cells.map((cell, idx) => (
+                                            <th
+                                                key={idx}
+                                                scope="col"
+                                                className="px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-extrabold text-white uppercase tracking-wider border-r last:border-r-0 border-white/20"
+                                            >
+                                                {typeof cell === 'object' ? JSON.stringify(cell) : String(cell || '')}
+                                            </th>
+                                        ))}
                                 </tr>
                             </thead>
                         )}
                         <tbody className="divide-y divide-white/15">
                             {bodyRows.map((row, rIdx) => (
                                 <tr key={row._key || rIdx} className="hover:bg-white/10 transition-colors">
-                                    {row.cells?.map((cell, cIdx) => (
-                                        <td
-                                            key={cIdx}
-                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-sm sm:text-base text-gray-200 leading-relaxed border-r last:border-r-0 border-white/15 font-normal"
-                                        >
-                                            {cell}
-                                        </td>
-                                    ))}
+                                    {Array.isArray(row.cells) &&
+                                        row.cells.map((cell, cIdx) => (
+                                            <td
+                                                key={cIdx}
+                                                className="px-4 py-3.5 sm:px-6 sm:py-4 text-sm sm:text-base text-gray-200 leading-relaxed border-r last:border-r-0 border-white/15 font-normal"
+                                            >
+                                                {typeof cell === 'object' ? JSON.stringify(cell) : String(cell || '')}
+                                            </td>
+                                        ))}
                                 </tr>
                             ))}
                         </tbody>
@@ -148,6 +156,6 @@ const components = {
 };
 
 export default function PortableTextRenderer({ value }) {
-    if (!value) return null;
+    if (!value || !Array.isArray(value)) return null;
     return <PortableText value={value} components={components} />;
 }
