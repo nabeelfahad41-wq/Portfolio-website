@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
+import { table } from '@sanity/table';
 import { schemaTypes } from './sanity/schemas';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'ywwwq6js';
@@ -11,7 +12,7 @@ export default defineConfig({
     title: 'Blog Content Manager',
     projectId,
     dataset,
-    plugins: [structureTool()],
+    plugins: [structureTool(), table()],
     schema: {
         types: schemaTypes,
     },

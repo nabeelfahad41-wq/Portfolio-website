@@ -13,6 +13,23 @@ export async function generateStaticParams() {
     return slugs.map((slug) => ({ slug }));
 }
 
+function getReadTime(post) {
+    let words = 0;
+    if (post.excerpt) words += post.excerpt.split(/\s+/).length;
+    if (post.title) words += post.title.split(/\s+/).length;
+    if (Array.isArray(post.body)) {
+        post.body.forEach((block) => {
+            if (Array.isArray(block.children)) {
+                block.children.forEach((child) => {
+                    if (child.text) words += child.text.split(/\s+/).length;
+                });
+            }
+        });
+    }
+    const mins = Math.max(2, Math.ceil(words / 180));
+    return `${mins} min read`;
+}
+
 export async function generateMetadata({ params }) {
     const { slug } = await params;
     const post = await getPostBySlug(slug);
@@ -108,6 +125,8 @@ export default async function BlogPostPage({ params }) {
         })
         : null;
 
+    const readTime = getReadTime(post);
+
     // JSON-LD Structured Data Schema.org objects
     const blogPostingJsonLd = {
         '@context': 'https://schema.org',
@@ -186,11 +205,11 @@ export default async function BlogPostPage({ params }) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
             />
 
-            <article className="bg-white min-h-screen pt-36 pb-24 text-gray-900 border-t border-gray-100">
+            <article className="bg-white min-h-screen pt-32 pb-24 text-gray-900 border-t border-gray-100">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Breadcrumb Navigation */}
-                    <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-8 font-medium overflow-x-auto whitespace-nowrap">
+                    <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-8 font-medium overflow-x-auto whitespace-nowrap scrollbar-none">
                         <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
                         <span>/</span>
                         <Link href="/blog" className="hover:text-green-600 transition-colors">Blog</Link>
@@ -204,15 +223,15 @@ export default async function BlogPostPage({ params }) {
                         <span className="text-gray-400 truncate max-w-[200px]">{post.title}</span>
                     </nav>
 
-                    {/* Header & Meta */}
+                    {/* Article Header */}
                     <header className="mb-10">
                         {post.category && (
-                            <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 border border-green-200">
+                            <span className="inline-block bg-green-100 text-green-800 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-5 border border-green-200/80 shadow-2xs">
                                 {post.category.title}
                             </span>
                         )}
 
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.18] mb-6">
                             {post.title}
                         </h1>
 
@@ -222,10 +241,10 @@ export default async function BlogPostPage({ params }) {
                             </p>
                         )}
 
-                        {/* Author & Date Bar */}
+                        {/* Author & Reading Meta Bar */}
                         <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100 text-sm text-gray-600">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-green-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
+                                <div className="w-10 h-10 rounded-full bg-green-600 text-white font-bold flex items-center justify-center text-sm shadow-xs">
                                     {post.author?.name ? post.author.name.charAt(0) : 'N'}
                                 </div>
                                 <div>
@@ -234,20 +253,26 @@ export default async function BlogPostPage({ params }) {
                                 </div>
                             </div>
 
-                            {formattedDate && (
-                                <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
-                                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <span>Published on {formattedDate}</span>
-                                </div>
-                            )}
+                            <div className="flex items-center gap-3 text-xs font-medium text-gray-500">
+                                {formattedDate && (
+                                    <div className="flex items-center gap-1.5">
+                                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        <span>{formattedDate}</span>
+                                    </div>
+                                )}
+                                <span>•</span>
+                                <span className="text-green-700 bg-green-50 px-2.5 py-1 rounded-md font-bold border border-green-200/60">
+                                    {readTime}
+                                </span>
+                            </div>
                         </div>
                     </header>
 
                     {/* Featured Image */}
                     {mainImageSrc && (
-                        <div className="relative w-full aspect-[16/9] mb-12 overflow-hidden rounded-2xl border border-gray-200 shadow-md">
+                        <div className="relative w-full aspect-[16/9] mb-12 overflow-hidden rounded-2xl border border-gray-200/90 shadow-md">
                             <Image
                                 src={mainImageSrc}
                                 alt={post.mainImage?.alt || post.title}
@@ -258,16 +283,16 @@ export default async function BlogPostPage({ params }) {
                         </div>
                     )}
 
-                    {/* Rich Content Body */}
-                    <div className="prose prose-lg prose-green max-w-none text-gray-800">
+                    {/* Ergonomic Content Body */}
+                    <div className="max-w-3xl mx-auto">
                         <PortableTextRenderer value={post.body} />
                     </div>
 
-                    {/* Post Footer & Back Link */}
-                    <footer className="mt-16 pt-8 border-t border-gray-200">
+                    {/* Post Footer & Author Card */}
+                    <footer className="max-w-3xl mx-auto mt-16 pt-10 border-t border-gray-200">
                         {post.author && (
-                            <div className="bg-gray-50 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8">
-                                <div className="w-14 h-14 rounded-full bg-green-600 text-white font-extrabold flex items-center justify-center text-xl flex-shrink-0 shadow-md">
+                            <div className="bg-gray-50/80 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-10 shadow-xs">
+                                <div className="w-14 h-14 rounded-full bg-green-600 text-white font-extrabold flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
                                     {post.author.name.charAt(0)}
                                 </div>
                                 <div>
@@ -282,7 +307,7 @@ export default async function BlogPostPage({ params }) {
                         <div className="flex justify-between items-center">
                             <Link
                                 href="/blog"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-sm transition-colors"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-900 hover:bg-green-600 text-white font-bold text-xs sm:text-sm transition-all shadow-xs"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

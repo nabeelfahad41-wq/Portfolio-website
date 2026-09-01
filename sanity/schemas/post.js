@@ -142,6 +142,10 @@ export const postSchema = defineType({
                         },
                     ],
                 },
+                {
+                    type: 'table',
+                    title: 'Table',
+                },
             ],
         }),
 
