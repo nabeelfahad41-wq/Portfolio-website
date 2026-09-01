@@ -29,11 +29,11 @@ export default function Footer() {
 
                 {/* Places We Can Meet */}
                 <div>
-                    <p className="text-[10px] font-mono tracking-[0.25em] text-gray-500 uppercase mb-5 flex items-center gap-3">
+                    <p className="text-xs font-mono tracking-[0.25em] text-gray-300 uppercase mb-5 flex items-center gap-3">
                         Places We Can Meet
                         <span className="flex-1 h-px bg-gray-800" />
                     </p>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                    <p className="text-gray-300 text-sm leading-relaxed">
                         Bangalore<br />
                         Kerala
                     </p>
@@ -41,7 +41,7 @@ export default function Footer() {
 
                 {/* Menu */}
                 <div>
-                    <p className="text-[10px] font-mono tracking-[0.25em] text-gray-500 uppercase mb-5 flex items-center gap-3">
+                    <p className="text-xs font-mono tracking-[0.25em] text-gray-300 uppercase mb-5 flex items-center gap-3">
                         Menu
                         <span className="flex-1 h-px bg-gray-800" />
                     </p>
@@ -50,7 +50,7 @@ export default function Footer() {
                             <li key={l.label}>
                                 <Link
                                     href={l.href}
-                                    className="text-sm text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-wider font-light"
+                                    className="text-sm text-gray-300 hover:text-white transition-colors duration-200 uppercase tracking-wider font-light"
                                 >
                                     {l.label}
                                 </Link>
@@ -61,16 +61,16 @@ export default function Footer() {
 
                 {/* Services */}
                 <div>
-                    <p className="text-[10px] font-mono tracking-[0.25em] text-gray-500 uppercase mb-5 flex items-center gap-3">
+                    <p className="text-xs font-mono tracking-[0.25em] text-gray-300 uppercase mb-5 flex items-center gap-3">
                         Services
                         <span className="flex-1 h-px bg-gray-800" />
                     </p>
                     <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
                         {services.map((s) => (
                             <li key={s.label}>
-                                <Link 
+                                <Link
                                     href={s.href}
-                                    className="text-sm md:text-base font-mono tracking-widest text-gray-400 hover:text-white transition-colors uppercase"
+                                    className="text-sm md:text-base font-mono tracking-widest text-gray-300 hover:text-white transition-colors uppercase"
                                 >
                                     {s.label}
                                 </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
             <div className="relative overflow-hidden bg-gradient-to-br from-[#43A047] via-[#66BB6A] to-white px-8 md:px-16 pt-14 pb-0">
 
                 {/* Tagline */}
-                <p className="text-black/70 text-sm md:text-base font-light tracking-wide max-w-xs mb-6">
+                <p className="text-black text-sm md:text-base font-medium tracking-wide max-w-xs mb-6">
                     Building systems that turn attention into real business growth.
                 </p>
 
@@ -105,10 +105,10 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-3 border-t border-black/20 py-4 mt-0">
-                    <p className="text-black/60 text-xs">© 2026 Nabeel. All Rights Reserved.</p>
+                    <p className="text-black font-medium text-xs">© 2026 Nabeel. All Rights Reserved.</p>
                     <Link
                         href="/privacy-policy"
-                        className="text-black/60 hover:text-black text-xs transition-colors duration-200"
+                        className="text-black font-semibold hover:underline text-xs transition-colors duration-200"
                     >
                         Privacy Policy
                     </Link>

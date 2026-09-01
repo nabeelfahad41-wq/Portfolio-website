@@ -51,11 +51,9 @@ export default async function BlogListingPage() {
 
     return (
         <main className="bg-black text-white min-h-screen font-sans selection:bg-[#43A047] selection:text-white relative">
-            {/* Page-wide Background Enhancements (Matching Portfolio & Site Theme) */}
+            {/* Page-wide Background Enhancements */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                {/* Green/Black Gradient */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(67,160,71,0.15),transparent_70%)]" />
-                {/* Small Grid Lines */}
                 <div
                     className="absolute inset-0 opacity-[0.03]"
                     style={{
@@ -69,29 +67,30 @@ export default async function BlogListingPage() {
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-24">
 
                 {/* Hero Header Section */}
-                <div className="max-w-4xl mb-16">
-                    <div className="inline-block px-4 py-1.5 rounded-full border border-[#43A047]/30 bg-[#43A047]/10 text-[#43A047] text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-8">
+                <header className="max-w-4xl mb-16">
+                    <div className="inline-block px-4 py-1.5 rounded-full border border-[#43A047]/50 bg-[#43A047]/20 text-[#66BB6A] text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-8">
                         Articles & Insights
                     </div>
                     <h1
                         className={`text-[12vw] sm:text-[8vw] lg:text-[6.5vw] leading-[0.9] uppercase mb-8 ${leagueGothic.className}`}
                     >
                         Latest Insights On <br />
-                        <span className="text-[#43A047]">Growth, Web & SEO</span>
+                        <span className="text-[#66BB6A]">Growth, Web & SEO</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl leading-relaxed">
                         Actionable strategies, technical web development guides, and search engine optimization breakdowns to scale your brand.
                     </p>
-                </div>
+                </header>
 
                 {/* Featured Story Hero Card */}
                 {featuredPost && (
-                    <section className="mb-20">
+                    <section className="mb-20" aria-label="Featured Story">
                         <div className="group relative bg-white/[0.03] border border-white/10 rounded-[2.5rem] overflow-hidden hover:border-[#43A047]/50 transition-all duration-500 backdrop-blur-sm">
                             <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                                 {/* Featured Image */}
                                 <Link
                                     href={`/blog/${featuredPost.slug}`}
+                                    aria-label={`Featured Story: ${featuredPost.title}`}
                                     className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[300px] sm:min-h-[420px] overflow-hidden bg-white/5 block"
                                 >
                                     <Image
@@ -103,6 +102,7 @@ export default async function BlogListingPage() {
                                         alt={featuredPost.mainImage?.alt || featuredPost.title}
                                         fill
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 60vw"
                                         className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                     />
                                     <div className="absolute top-6 left-6 flex flex-wrap gap-2 z-10">
@@ -110,7 +110,7 @@ export default async function BlogListingPage() {
                                             Featured Story
                                         </span>
                                         {featuredPost.category && (
-                                            <span className="bg-black/80 backdrop-blur-md text-[#43A047] font-semibold text-xs px-4 py-1.5 rounded-full border border-[#43A047]/40 shadow-xs">
+                                            <span className="bg-black/90 backdrop-blur-md text-[#66BB6A] font-semibold text-xs px-4 py-1.5 rounded-full border border-[#43A047]/50 shadow-xs">
                                                 {featuredPost.category.title}
                                             </span>
                                         )}
@@ -120,10 +120,10 @@ export default async function BlogListingPage() {
                                 {/* Featured Content */}
                                 <div className="lg:col-span-5 p-7 sm:p-10 lg:p-12 flex flex-col justify-between h-full">
                                     <div>
-                                        <div className="flex items-center gap-3 text-xs font-semibold text-gray-400 mb-4">
+                                        <div className="flex items-center gap-3 text-xs font-semibold text-gray-300 mb-4">
                                             {featuredPost.publishedAt && (
                                                 <div className="flex items-center gap-1.5">
-                                                    <Calendar className="w-3.5 h-3.5 text-[#43A047]" />
+                                                    <Calendar className="w-3.5 h-3.5 text-[#66BB6A]" aria-hidden="true" />
                                                     <time dateTime={featuredPost.publishedAt}>
                                                         {new Date(featuredPost.publishedAt).toLocaleDateString('en-US', {
                                                             year: 'numeric',
@@ -134,20 +134,20 @@ export default async function BlogListingPage() {
                                                 </div>
                                             )}
                                             <span>•</span>
-                                            <div className="flex items-center gap-1 text-[#43A047] bg-[#43A047]/10 px-2.5 py-0.5 rounded-md font-bold border border-[#43A047]/20">
-                                                <Clock className="w-3 h-3" />
+                                            <div className="flex items-center gap-1 text-[#66BB6A] bg-[#43A047]/20 px-2.5 py-0.5 rounded-md font-bold border border-[#43A047]/40">
+                                                <Clock className="w-3 h-3" aria-hidden="true" />
                                                 <span>{getReadTime(featuredPost)}</span>
                                             </div>
                                         </div>
 
-                                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white group-hover:text-[#43A047] transition-colors duration-200 leading-snug mb-4">
+                                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white group-hover:text-[#66BB6A] transition-colors duration-200 leading-snug mb-4">
                                             <Link href={`/blog/${featuredPost.slug}`}>
                                                 {featuredPost.title}
                                             </Link>
                                         </h2>
 
                                         {featuredPost.excerpt && (
-                                            <p className="text-gray-400 text-base sm:text-lg leading-relaxed line-clamp-3 mb-8 font-light">
+                                            <p className="text-gray-300 text-base sm:text-lg leading-relaxed line-clamp-3 mb-8 font-light">
                                                 {featuredPost.excerpt}
                                             </p>
                                         )}
@@ -155,23 +155,24 @@ export default async function BlogListingPage() {
 
                                     <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-bold flex items-center justify-center text-sm shadow-sm">
+                                            <div className="w-10 h-10 rounded-full bg-[#43A047]/20 border border-[#43A047]/50 text-[#66BB6A] font-bold flex items-center justify-center text-sm shadow-sm">
                                                 {featuredPost.author?.name ? featuredPost.author.name.charAt(0) : 'N'}
                                             </div>
                                             <div>
                                                 <div className="text-sm font-bold text-white">
                                                     {featuredPost.author?.name || 'Nabeel'}
                                                 </div>
-                                                <div className="text-xs text-gray-500">Author</div>
+                                                <div className="text-xs text-gray-300">Author</div>
                                             </div>
                                         </div>
 
                                         <Link
                                             href={`/blog/${featuredPost.slug}`}
+                                            aria-label={`Read Article: ${featuredPost.title}`}
                                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#43A047] hover:bg-[#66BB6A] text-black font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 shadow-md group/btn"
                                         >
                                             Read Article
-                                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
                                         </Link>
                                     </div>
                                 </div>
@@ -185,14 +186,14 @@ export default async function BlogListingPage() {
                     <h2 className={`text-3xl md:text-5xl uppercase tracking-tight text-white ${leagueGothic.className}`}>
                         Explore All Articles
                     </h2>
-                    <span className="text-xs font-bold tracking-widest uppercase text-[#43A047] bg-[#43A047]/10 border border-[#43A047]/30 px-3.5 py-1.5 rounded-full">
+                    <span className="text-xs font-bold tracking-widest uppercase text-[#66BB6A] bg-[#43A047]/20 border border-[#43A047]/40 px-3.5 py-1.5 rounded-full">
                         {gridPosts.length} {gridPosts.length === 1 ? 'Article' : 'Articles'}
                     </span>
                 </div>
 
                 {/* Blog Cards Grid Layout */}
                 {gridPosts && gridPosts.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                    <section aria-label="All Articles Grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                         {gridPosts.map((post) => {
                             const imageSrc = post.mainImage?.asset
                                 ? urlForImage(post.mainImage)?.url()
@@ -212,15 +213,16 @@ export default async function BlogListingPage() {
                                     className="group flex flex-col bg-white/[0.03] border border-white/10 rounded-[2rem] overflow-hidden hover:border-[#43A047]/50 hover:bg-white/[0.05] transition-all duration-500 h-full"
                                 >
                                     {/* Card Image */}
-                                    <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-white/5">
+                                    <Link href={`/blog/${post.slug}`} aria-label={`Article: ${post.title}`} className="relative block aspect-[16/10] overflow-hidden bg-white/5">
                                         <Image
                                             src={imageSrc}
                                             alt={post.mainImage?.alt || post.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                         />
                                         {post.category && (
-                                            <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#43A047] font-bold text-xs px-3.5 py-1.5 rounded-full border border-[#43A047]/40 shadow-xs uppercase tracking-wider">
+                                            <span className="absolute top-4 left-4 bg-black/90 backdrop-blur-md text-[#66BB6A] font-bold text-xs px-3.5 py-1.5 rounded-full border border-[#43A047]/50 shadow-xs uppercase tracking-wider">
                                                 {post.category.title}
                                             </span>
                                         )}
@@ -229,24 +231,24 @@ export default async function BlogListingPage() {
                                     {/* Card Content */}
                                     <div className="flex-1 flex flex-col justify-between p-6 sm:p-7">
                                         <div>
-                                            <div className="flex items-center gap-2.5 text-xs font-medium text-gray-400 mb-3">
+                                            <div className="flex items-center gap-2.5 text-xs font-medium text-gray-300 mb-3">
                                                 {formattedDate && (
                                                     <time dateTime={post.publishedAt}>{formattedDate}</time>
                                                 )}
                                                 {formattedDate && <span>•</span>}
-                                                <span className="text-[#43A047] font-bold bg-[#43A047]/10 px-2 py-0.5 rounded border border-[#43A047]/20">
+                                                <span className="text-[#66BB6A] font-bold bg-[#43A047]/20 px-2 py-0.5 rounded border border-[#43A047]/40">
                                                     {getReadTime(post)}
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-xl font-bold text-white group-hover:text-[#43A047] transition-colors duration-200 line-clamp-2 leading-snug">
+                                            <h3 className="text-xl font-bold text-white group-hover:text-[#66BB6A] transition-colors duration-200 line-clamp-2 leading-snug">
                                                 <Link href={`/blog/${post.slug}`}>
                                                     {post.title}
                                                 </Link>
                                             </h3>
 
                                             {post.excerpt && (
-                                                <p className="mt-3 text-sm text-gray-400 line-clamp-3 leading-relaxed font-light">
+                                                <p className="mt-3 text-sm text-gray-300 line-clamp-3 leading-relaxed font-light">
                                                     {post.excerpt}
                                                 </p>
                                             )}
@@ -255,7 +257,7 @@ export default async function BlogListingPage() {
                                         {/* Author & Footer Link */}
                                         <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="w-8 h-8 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-bold flex items-center justify-center text-xs">
+                                                <div className="w-8 h-8 rounded-full bg-[#43A047]/20 border border-[#43A047]/50 text-[#66BB6A] font-bold flex items-center justify-center text-xs">
                                                     {post.author?.name ? post.author.name.charAt(0) : 'N'}
                                                 </div>
                                                 <span className="text-xs font-semibold text-gray-300">
@@ -265,21 +267,22 @@ export default async function BlogListingPage() {
 
                                             <Link
                                                 href={`/blog/${post.slug}`}
-                                                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#43A047] group-hover:text-white uppercase tracking-wider transition-colors"
+                                                aria-label={`Read Post: ${post.title}`}
+                                                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#66BB6A] group-hover:text-white uppercase tracking-wider transition-colors"
                                             >
                                                 Read Post
-                                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                                             </Link>
                                         </div>
                                     </div>
                                 </article>
                             );
                         })}
-                    </div>
+                    </section>
                 ) : (
                     <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
                         <h3 className="text-xl font-bold text-white">No blog posts found yet</h3>
-                        <p className="text-gray-400 mt-2">Publish your first post from the Sanity Studio at /studio.</p>
+                        <p className="text-gray-300 mt-2">Publish your first post from the Sanity Studio at /studio.</p>
                     </div>
                 )}
             </div>

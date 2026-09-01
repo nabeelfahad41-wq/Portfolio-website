@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { getPostBySlug, getAllPostSlugs } from '@/sanity/lib/fetchData';
 import { urlForImage } from '@/sanity/lib/image';
 import PortableTextRenderer from '@/app/component/PortableTextRenderer';
@@ -206,7 +206,7 @@ export default async function BlogPostPage({ params }) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
             />
 
-            <article className="bg-black text-white min-h-screen font-sans selection:bg-[#43A047] selection:text-white relative">
+            <main id="main-content" className="bg-black text-white min-h-screen font-sans selection:bg-[#43A047] selection:text-white relative">
                 {/* Page-wide Background Enhancements */}
                 <div className="fixed inset-0 z-0 pointer-events-none">
                     {/* Green/Black Gradient */}
@@ -222,27 +222,27 @@ export default async function BlogPostPage({ params }) {
                     />
                 </div>
 
-                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-24">
+                <article className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-24">
 
                     {/* Breadcrumb Navigation */}
-                    <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-400 mb-8 font-medium overflow-x-auto whitespace-nowrap scrollbar-none">
-                        <Link href="/" className="hover:text-[#43A047] transition-colors">Home</Link>
-                        <span>/</span>
-                        <Link href="/blog" className="hover:text-[#43A047] transition-colors">Blog</Link>
+                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-gray-300 mb-8 font-medium overflow-x-auto whitespace-nowrap scrollbar-none">
+                        <Link href="/" className="hover:text-[#66BB6A] transition-colors">Home</Link>
+                        <span aria-hidden="true">/</span>
+                        <Link href="/blog" className="hover:text-[#66BB6A] transition-colors">Blog</Link>
                         {post.category && (
                             <>
-                                <span>/</span>
-                                <span className="text-[#43A047] font-semibold">{post.category.title}</span>
+                                <span aria-hidden="true">/</span>
+                                <span className="text-[#66BB6A] font-semibold">{post.category.title}</span>
                             </>
                         )}
-                        <span>/</span>
-                        <span className="text-gray-500 truncate max-w-[200px]">{post.title}</span>
+                        <span aria-hidden="true">/</span>
+                        <span className="text-gray-300 truncate max-w-[200px]">{post.title}</span>
                     </nav>
 
                     {/* Article Header */}
                     <header className="mb-10">
                         {post.category && (
-                            <span className="inline-block bg-[#43A047]/10 text-[#43A047] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-5 border border-[#43A047]/30 shadow-2xs">
+                            <span className="inline-block bg-[#43A047]/20 text-[#66BB6A] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-5 border border-[#43A047]/50 shadow-2xs">
                                 {post.category.title}
                             </span>
                         )}
@@ -258,27 +258,27 @@ export default async function BlogPostPage({ params }) {
                         )}
 
                         {/* Author & Reading Meta Bar */}
-                        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-white/10 text-sm text-gray-400">
+                        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-white/10 text-sm text-gray-300">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-bold flex items-center justify-center text-sm shadow-xs">
+                                <div className="w-10 h-10 rounded-full bg-[#43A047]/20 border border-[#43A047]/50 text-[#66BB6A] font-bold flex items-center justify-center text-sm shadow-xs">
                                     {post.author?.name ? post.author.name.charAt(0) : 'N'}
                                 </div>
                                 <div>
                                     <div className="font-bold text-white">{post.author?.name || 'Nabeel'}</div>
-                                    <div className="text-xs text-gray-500">Digital Marketer & Developer</div>
+                                    <div className="text-xs text-gray-300">Digital Marketer & Developer</div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-3 text-xs font-medium text-gray-400">
+                            <div className="flex items-center gap-3 text-xs font-medium text-gray-300">
                                 {formattedDate && (
                                     <div className="flex items-center gap-1.5">
-                                        <Calendar className="w-4 h-4 text-[#43A047]" />
-                                        <span>{formattedDate}</span>
+                                        <Calendar className="w-4 h-4 text-[#66BB6A]" aria-hidden="true" />
+                                        <time dateTime={post.publishedAt}>{formattedDate}</time>
                                     </div>
                                 )}
                                 <span>•</span>
-                                <div className="flex items-center gap-1 text-[#43A047] bg-[#43A047]/10 px-2.5 py-1 rounded-md font-bold border border-[#43A047]/30">
-                                    <Clock className="w-3.5 h-3.5" />
+                                <div className="flex items-center gap-1 text-[#66BB6A] bg-[#43A047]/20 px-2.5 py-1 rounded-md font-bold border border-[#43A047]/40">
+                                    <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                                     <span>{readTime}</span>
                                 </div>
                             </div>
@@ -310,12 +310,12 @@ export default async function BlogPostPage({ params }) {
                     <footer className="max-w-3xl mx-auto mt-16 pt-10 border-t border-white/10">
                         {post.author && (
                             <div className="bg-white/[0.03] p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-10 shadow-sm">
-                                <div className="w-14 h-14 rounded-full bg-[#43A047]/20 border border-[#43A047]/40 text-[#43A047] font-extrabold flex items-center justify-center text-xl flex-shrink-0">
+                                <div className="w-14 h-14 rounded-full bg-[#43A047]/20 border border-[#43A047]/50 text-[#66BB6A] font-extrabold flex items-center justify-center text-xl flex-shrink-0">
                                     {post.author.name.charAt(0)}
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-white text-lg">Written by {post.author.name}</h3>
-                                    <p className="text-sm text-gray-400 mt-1 leading-relaxed font-light">
+                                    <p className="text-sm text-gray-300 mt-1 leading-relaxed font-light">
                                         {post.author.bio || 'Combining strategy, performance marketing, SEO, and custom web development to turn digital presence into real revenue.'}
                                     </p>
                                 </div>
@@ -325,16 +325,17 @@ export default async function BlogPostPage({ params }) {
                         <div className="flex justify-between items-center">
                             <Link
                                 href="/blog"
+                                aria-label="Back to All Articles"
                                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#43A047] hover:bg-[#66BB6A] text-black font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md"
                             >
-                                <ArrowLeft className="w-4 h-4" />
+                                <ArrowLeft className="w-4 h-4" aria-hidden="true" />
                                 Back to All Articles
                             </Link>
                         </div>
                     </footer>
 
-                </div>
-            </article>
+                </article>
+            </main>
         </>
     );
 }

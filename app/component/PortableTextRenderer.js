@@ -25,24 +25,24 @@ const components = {
             </h4>
         ),
         normal: ({ children }) => (
-            <p className="text-base sm:text-lg lg:text-[19px] text-gray-300 leading-relaxed lg:leading-8 mb-6 font-light">
+            <p className="text-base sm:text-lg lg:text-[19px] text-gray-200 leading-relaxed lg:leading-8 mb-6 font-normal">
                 {children}
             </p>
         ),
         blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-[#43A047] bg-[#43A047]/10 pl-6 pr-4 py-4 my-8 rounded-r-xl text-gray-200 italic font-normal text-base sm:text-lg border-y border-r border-[#43A047]/20 shadow-xs">
+            <blockquote className="border-l-4 border-[#43A047] bg-[#43A047]/20 pl-6 pr-4 py-4 my-8 rounded-r-xl text-gray-100 italic font-medium text-base sm:text-lg border-y border-r border-[#43A047]/40 shadow-xs">
                 {children}
             </blockquote>
         ),
     },
     list: {
         bullet: ({ children }) => (
-            <ul className="list-disc list-outside ml-6 mb-6 space-y-2.5 text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+            <ul className="list-disc list-outside ml-6 mb-6 space-y-2.5 text-gray-200 text-base sm:text-lg leading-relaxed font-normal">
                 {children}
             </ul>
         ),
         number: ({ children }) => (
-            <ol className="list-decimal list-outside ml-6 mb-6 space-y-2.5 text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+            <ol className="list-decimal list-outside ml-6 mb-6 space-y-2.5 text-gray-200 text-base sm:text-lg leading-relaxed font-normal">
                 {children}
             </ol>
         ),
@@ -53,14 +53,14 @@ const components = {
     },
     marks: {
         strong: ({ children }) => <strong className="font-bold text-white">{children}</strong>,
-        em: ({ children }) => <em className="italic text-gray-200">{children}</em>,
+        em: ({ children }) => <em className="italic text-gray-100">{children}</em>,
         code: ({ children }) => (
-            <code className="bg-white/10 text-[#43A047] px-2 py-0.5 rounded text-sm font-mono border border-white/10">
+            <code className="bg-white/10 text-[#66BB6A] px-2 py-0.5 rounded text-sm font-mono border border-white/20">
                 {children}
             </code>
         ),
-        underline: ({ children }) => <span className="underline decoration-[#43A047] decoration-2 underline-offset-4">{children}</span>,
-        'strike-through': ({ children }) => <span className="line-through text-gray-500">{children}</span>,
+        underline: ({ children }) => <span className="underline decoration-[#66BB6A] decoration-2 underline-offset-4">{children}</span>,
+        'strike-through': ({ children }) => <span className="line-through text-gray-400">{children}</span>,
         link: ({ value, children }) => {
             const target = value?.blank ? '_blank' : undefined;
             const rel = value?.blank ? 'noopener noreferrer' : undefined;
@@ -69,7 +69,7 @@ const components = {
                     href={value?.href}
                     target={target}
                     rel={rel}
-                    className="text-[#43A047] font-medium underline underline-offset-4 hover:text-white transition-colors"
+                    className="text-[#66BB6A] font-semibold underline underline-offset-4 hover:text-white transition-colors"
                 >
                     {children}
                 </a>
@@ -86,7 +86,7 @@ const components = {
                     <div className="relative w-full h-[320px] sm:h-[420px] md:h-[500px]">
                         <Image
                             src={imageUrl}
-                            alt={value.alt || 'Blog content image'}
+                            alt={value.alt || 'Blog article illustration'}
                             fill
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 768px"
@@ -95,7 +95,7 @@ const components = {
                         />
                     </div>
                     {value.caption && (
-                        <figcaption className="text-center text-sm text-gray-400 mt-3 italic px-4 py-1">
+                        <figcaption className="text-center text-sm text-gray-300 mt-3 italic px-4 py-1">
                             {value.caption}
                         </figcaption>
                     )}
@@ -109,15 +109,16 @@ const components = {
             const bodyRows = hasMultipleRows ? value.rows.slice(1) : value.rows;
 
             return (
-                <div className="my-8 sm:my-10 w-full overflow-x-auto rounded-2xl border border-white/10 shadow-xl bg-white/[0.03]">
-                    <table className="w-full text-left border-collapse min-w-[500px]">
+                <div className="my-8 sm:my-10 w-full overflow-x-auto rounded-2xl border border-white/20 shadow-xl bg-white/[0.05]">
+                    <table className="w-full text-left border-collapse min-w-[500px]" aria-label="Data table">
                         {headerRow && (
-                            <thead className="bg-white/10 border-b border-white/10">
+                            <thead className="bg-white/15 border-b border-white/20">
                                 <tr>
                                     {headerRow.cells?.map((cell, idx) => (
                                         <th
                                             key={idx}
-                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-bold text-white uppercase tracking-wider border-r last:border-r-0 border-white/10"
+                                            scope="col"
+                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-xs sm:text-sm font-extrabold text-white uppercase tracking-wider border-r last:border-r-0 border-white/20"
                                         >
                                             {cell}
                                         </th>
@@ -125,13 +126,13 @@ const components = {
                                 </tr>
                             </thead>
                         )}
-                        <tbody className="divide-y divide-white/10">
+                        <tbody className="divide-y divide-white/15">
                             {bodyRows.map((row, rIdx) => (
-                                <tr key={row._key || rIdx} className="hover:bg-white/5 transition-colors">
+                                <tr key={row._key || rIdx} className="hover:bg-white/10 transition-colors">
                                     {row.cells?.map((cell, cIdx) => (
                                         <td
                                             key={cIdx}
-                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-sm sm:text-base text-gray-300 leading-relaxed border-r last:border-r-0 border-white/10 font-light"
+                                            className="px-4 py-3.5 sm:px-6 sm:py-4 text-sm sm:text-base text-gray-200 leading-relaxed border-r last:border-r-0 border-white/15 font-normal"
                                         >
                                             {cell}
                                         </td>
