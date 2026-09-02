@@ -1,9 +1,5 @@
-"use client";
-
-import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import {
   CheckCircle2,
   Code2,
@@ -13,83 +9,24 @@ import {
   Layout,
   Zap,
   Search,
-  BarChart3,
-  Lock,
-  ChevronDown,
   ArrowRight,
   Star,
   ShieldCheck,
   TrendingUp,
-  MessageCircle,
   Globe,
   Briefcase
 } from "lucide-react";
 import Footer from "../component/Footer";
+import KeralaFAQ from "./KeralaFAQ";
+import KeralaContactForm from "./KeralaContactForm";
+import KeralaAnimations from "./KeralaAnimations";
 
-gsap.registerPlugin(ScrollTrigger);
+export const metadata = {
+  title: "Freelance Website Designer in Kerala | High-Performance & SEO Web Developer",
+  description: "Native Malayalam-speaking freelance web developer offering SEO-focused website design and high-performance development in Kerala."
+};
 
 export default function KeralaWebDeveloper() {
-  const containerRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-fade", {
-        y: 30,
-        opacity: 0,
-        duration: 1.1,
-        stagger: 0.15,
-        ease: "power3.out",
-        delay: 0.2
-      });
-
-      gsap.fromTo(".hero-img-card",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.08,
-          ease: "power3.out",
-          delay: 0.1
-        }
-      );
-
-      gsap.utils.toArray(".reveal-section").forEach((section) => {
-        gsap.fromTo(section,
-          { y: 40, opacity: 0 },
-          {
-            scrollTrigger: {
-              trigger: section,
-              start: "top 88%",
-              toggleActions: "play none none none"
-            },
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out"
-          }
-        );
-      });
-
-      gsap.fromTo(".service-card",
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: ".services-grid",
-            start: "top 90%",
-            toggleActions: "play none none none"
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: "power3.out"
-        }
-      );
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   // SEO Structured Data (JSON-LD)
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -130,7 +67,7 @@ export default function KeralaWebDeveloper() {
   };
 
   return (
-    <main ref={containerRef} className="relative text-white overflow-hidden">
+    <main className="relative text-white overflow-hidden">
       {/* Schema Injection */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
@@ -204,28 +141,58 @@ export default function KeralaWebDeveloper() {
                   className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#43A047]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
                   style={{ top: '0px', left: '20px', transform: 'rotate(3deg)', transformOrigin: 'center' }}
                 >
-                  <img src="/assets/freelance-website-designer-in-kerala-defence-trasccon.png" alt="High performance business website built by freelance website designer in Kerala" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image
+                    src="/assets/trasccon.webp"
+                    alt="High performance business website built by freelance website designer in Kerala"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    quality={80}
+                    priority
+                    className="object-cover object-top"
+                  />
                 </div>
 
                 <div
                   className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
                   style={{ top: '130px', left: '-10px', transform: 'rotate(-2deg)', transformOrigin: 'center' }}
                 >
-                  <img src="/assets/kerala-freelance-web-developer-agency-leadworkz.png" alt="Next.js agency website development by expert web developer in Kerala" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image
+                    src="/assets/leadworks.webp"
+                    alt="Next.js agency website development by expert web developer in Kerala"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    quality={80}
+                    priority
+                    className="object-cover object-top"
+                  />
                 </div>
 
                 <div
                   className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
                   style={{ top: '260px', left: '15px', transform: 'rotate(4deg)', transformOrigin: 'center' }}
                 >
-                  <img src="/assets/seo-website-design-kerala-resort-hospitality.png" alt="SEO focused hospitality website design perfectly crafted for Kerala resorts" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image
+                    src="/assets/rain-country.webp"
+                    alt="SEO focused hospitality website design perfectly crafted for Kerala resorts"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    quality={80}
+                    className="object-cover object-top"
+                  />
                 </div>
 
                 <div
                   className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-40 transition-all duration-500 hover:z-50 hover:scale-[1.02]"
                   style={{ top: '390px', left: '-5px', transform: 'rotate(-3deg)', transformOrigin: 'center' }}
                 >
-                  <img src="/assets/b2b-web-development-kerala-industrial.png" alt="Conversion optimized B2B industrial website development in Kerala" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image
+                    src="/assets/navodaya.webp"
+                    alt="Conversion optimized B2B industrial website development in Kerala"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    quality={80}
+                    className="object-cover object-top"
+                  />
                 </div>
               </div>
             </div>
@@ -449,19 +416,19 @@ export default function KeralaWebDeveloper() {
           <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">FAQ</h2>
 
           <div className="space-y-4">
-            <FAQItem
+            <KeralaFAQ
               q="Why hire a freelance website designer in Kerala?"
               a="You get personalized attention, better communication, and cost-effective solutions tailored to your business."
             />
-            <FAQItem
+            <KeralaFAQ
               q="Do you understand local Kerala businesses?"
               a="Yes, being born and brought up in Kerala, I have a strong understanding of local market behavior and customer expectations."
             />
-            <FAQItem
+            <KeralaFAQ
               q="Do you provide SEO with website development?"
               a="Yes, every website is built with SEO fundamentals to improve visibility on Google."
             />
-            <FAQItem
+            <KeralaFAQ
               q="Which platform is better for my business?"
               a="It depends on your needs — WordPress for flexibility and Next.js for high performance."
             />
@@ -507,47 +474,17 @@ export default function KeralaWebDeveloper() {
           </div>
 
           {/* Contact Form UI */}
-          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl">
-            <h3 className="text-2xl font-bold mb-8">Start Your Project</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#43A047]/50 transition-colors text-white" />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#43A047]/50 transition-colors text-white" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#43A047]/50 transition-colors appearance-none text-white">
-                  <option className="bg-black">Select a service</option>
-                  <option className="bg-black">Website Development</option>
-                  <option className="bg-black">UI/UX Design</option>
-                  <option className="bg-black">SEO Optimization</option>
-                  <option className="bg-black">Performance Audit</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Message</label>
-                <textarea rows="4" placeholder="Tell me about your business goals..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#43A047]/50 transition-colors text-white"></textarea>
-              </div>
-              <button className="w-full py-5 bg-[#43A047] hover:bg-[#66BB6A] text-white font-black rounded-xl text-xl uppercase tracking-tighter transition-all shadow-[0_10px_30px_rgba(67,160,71,0.3)] flex items-center justify-center gap-3 group">
-                Send Message <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
+          <KeralaContactForm />
         </div>
       </section>
 
       <Footer />
+      <KeralaAnimations />
     </main>
   );
 }
 
-/* --- Reusable Components --- */
+/* --- Reusable Helper Components --- */
 
 function ProcessStep({ number, title, desc, align }) {
   const isLeft = align === "left";
@@ -572,22 +509,6 @@ function WhyMeCard({ icon, title }) {
       </div>
       <p className="font-semibold text-lg text-white leading-snug">{title}</p>
     </div>
-  );
-}
-
-function FAQItem({ q, a }) {
-  return (
-    <details className="group border border-white/10 rounded-2xl bg-white/[0.03] hover:border-[#43A047]/30 transition-all mb-3">
-      <summary className="flex justify-between items-center p-6 cursor-pointer list-none">
-        <h3 className="text-lg font-semibold text-white pr-4">{q}</h3>
-        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-open:bg-[#43A047] group-open:text-black shrink-0 transition-all">
-          <ChevronDown className="w-5 h-5 group-open:rotate-180 transition-transform" />
-        </div>
-      </summary>
-      <div className="px-6 pb-6">
-        <p className="text-gray-400 leading-relaxed text-base">{a}</p>
-      </div>
-    </details>
   );
 }
 
