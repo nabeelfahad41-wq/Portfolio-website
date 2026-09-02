@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   CheckCircle2,
   Code2,
@@ -19,7 +20,8 @@ import {
 import Footer from "../component/Footer";
 import KeralaFAQ from "./KeralaFAQ";
 import KeralaContactForm from "./KeralaContactForm";
-import KeralaAnimations from "./KeralaAnimations";
+
+const KeralaAnimations = dynamic(() => import("./KeralaAnimations"));
 
 export const metadata = {
   title: "Freelance Website Designer in Kerala | High-Performance & SEO Web Developer",
@@ -145,8 +147,8 @@ export default function KeralaWebDeveloper() {
                     src="/assets/trasccon.webp"
                     alt="High performance business website built by freelance website designer in Kerala"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -160,8 +162,8 @@ export default function KeralaWebDeveloper() {
                     src="/assets/leadworks.webp"
                     alt="Next.js agency website development by expert web developer in Kerala"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -175,8 +177,8 @@ export default function KeralaWebDeveloper() {
                     src="/assets/rain-country.webp"
                     alt="SEO focused hospitality website design perfectly crafted for Kerala resorts"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>
@@ -189,8 +191,8 @@ export default function KeralaWebDeveloper() {
                     src="/assets/navodaya.webp"
                     alt="Conversion optimized B2B industrial website development in Kerala"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>

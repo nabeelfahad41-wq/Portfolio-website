@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   CheckCircle2,
   Code2,
@@ -19,7 +20,8 @@ import {
 import Footer from "../component/Footer";
 import CalicutFAQ from "./CalicutFAQ";
 import CalicutContactForm from "./CalicutContactForm";
-import CalicutAnimations from "./CalicutAnimations";
+
+const CalicutAnimations = dynamic(() => import("./CalicutAnimations"));
 
 export const metadata = {
   title: "Freelance Web Developer in Calicut | Website Design & Development",
@@ -144,8 +146,8 @@ export default function CalicutWebDeveloper() {
                     src="/assets/trasccon.webp"
                     alt="Professional business website developed by freelance web developer in Calicut"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -159,8 +161,8 @@ export default function CalicutWebDeveloper() {
                     src="/assets/leadworks.webp"
                     alt="Modern website design for connecting local businesses in Calicut with their audience"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -174,8 +176,8 @@ export default function CalicutWebDeveloper() {
                     src="/assets/rain-country.webp"
                     alt="SEO ready website development supporting business growth in Calicut"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>
@@ -188,8 +190,8 @@ export default function CalicutWebDeveloper() {
                     src="/assets/navodaya.webp"
                     alt="Affordable and fast loading website design solutions in Calicut"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>

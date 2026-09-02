@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   CheckCircle2,
   Code2,
@@ -19,7 +20,8 @@ import {
 import Footer from "../component/Footer";
 import KochiFAQ from "./KochiFAQ";
 import KochiContactForm from "./KochiContactForm";
-import KochiAnimations from "./KochiAnimations";
+
+const KochiAnimations = dynamic(() => import("./KochiAnimations"));
 
 export const metadata = {
   title: "Freelance Web Developer Kochi | High-Performance Business Websites",
@@ -144,8 +146,8 @@ export default function KochiWebDeveloper() {
                     src="/assets/trasccon.webp"
                     alt="High performance business website built by freelance web developer in Kochi"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -159,8 +161,8 @@ export default function KochiWebDeveloper() {
                     src="/assets/leadworks.webp"
                     alt="Next.js website design for startups and agencies in Kochi"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     priority
                     className="object-cover object-top"
                   />
@@ -174,8 +176,8 @@ export default function KochiWebDeveloper() {
                     src="/assets/rain-country.webp"
                     alt="SEO focused website development driving results for Kochi businesses"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>
@@ -188,8 +190,8 @@ export default function KochiWebDeveloper() {
                     src="/assets/navodaya.webp"
                     alt="High performance Next.js and React development by expert Kochi web developer"
                     fill
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    quality={80}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
+                    quality={75}
                     className="object-cover object-top"
                   />
                 </div>
