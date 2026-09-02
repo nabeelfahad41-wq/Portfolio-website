@@ -9,14 +9,19 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ScrollRefresh() {
   useEffect(() => {
     try {
-      // Debug: list active ScrollTriggers
-      const triggers = ScrollTrigger.getAll();
-      console.log("[ScrollRefresh] active ScrollTriggers:", triggers.length);
+      const scheduleRefresh = () => {
+        const triggers = ScrollTrigger.getAll();
+        console.log("[ScrollRefresh] active ScrollTriggers:", triggers.length);
+        ScrollTrigger.refresh(true);
+      };
 
-      // Remove any existing pin spacer nodes and let ScrollTrigger rebuild them
-      // document.querySelectorAll('.gsap-pin-spacer').forEach(el => el.remove());
-
-      ScrollTrigger.refresh(true);
+      if (typeof window !== "undefined") {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(scheduleRefresh, { timeout: 2000 });
+        } else {
+          setTimeout(scheduleRefresh, 200);
+        }
+      }
     } catch (e) {
       console.warn('ScrollRefresh failed', e);
     }

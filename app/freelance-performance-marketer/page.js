@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -27,53 +28,59 @@ gsap.registerPlugin(ScrollTrigger);
 export default function FreelancePerformanceMarketer() {
   const containerRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-fade", {
-        y: 30,
-        opacity: 0,
-        duration: 1.1,
-        stagger: 0.15,
-        ease: "power3.out",
-        delay: 0.2,
-      });
+  useEffect(() => {
+    let ctx;
+    const timer = setTimeout(() => {
+      ctx = gsap.context(() => {
+        gsap.from(".hero-fade", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
 
-      gsap.fromTo(
-        ".hero-img-card",
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power3.out", delay: 0.1 }
-      );
-
-      gsap.utils.toArray(".reveal-section").forEach((section) => {
         gsap.fromTo(
-          section,
-          { y: 44, opacity: 0 },
+          ".hero-img-card",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power3.out" }
+        );
+
+        gsap.utils.toArray(".reveal-section").forEach((section) => {
+          gsap.fromTo(
+            section,
+            { y: 44, opacity: 0 },
+            {
+              scrollTrigger: { trigger: section, start: "top 88%", toggleActions: "play none none none" },
+              y: 0, opacity: 1, duration: 0.9, ease: "power3.out",
+            }
+          );
+        });
+
+        gsap.fromTo(
+          ".service-card",
+          { y: 30, opacity: 0 },
           {
-            scrollTrigger: { trigger: section, start: "top 88%", toggleActions: "play none none none" },
-            y: 0, opacity: 1, duration: 0.9, ease: "power3.out",
+            scrollTrigger: { trigger: ".services-grid", start: "top 90%", toggleActions: "play none none none" },
+            y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: "power3.out",
           }
         );
-      });
 
-      gsap.fromTo(
-        ".service-card",
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: { trigger: ".services-grid", start: "top 90%", toggleActions: "play none none none" },
-          y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: "power3.out",
-        }
-      );
+        gsap.fromTo(
+          ".case-card",
+          { y: 30, opacity: 0 },
+          {
+            scrollTrigger: { trigger: ".cases-grid", start: "top 88%", toggleActions: "play none none none" },
+            y: 0, opacity: 1, duration: 0.75, stagger: 0.12, ease: "power3.out",
+          }
+        );
+      }, containerRef);
+    }, 50);
 
-      gsap.fromTo(
-        ".case-card",
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: { trigger: ".cases-grid", start: "top 88%", toggleActions: "play none none none" },
-          y: 0, opacity: 1, duration: 0.75, stagger: 0.12, ease: "power3.out",
-        }
-      );
-    }, containerRef);
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(timer);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   const breadcrumbSchema = {
@@ -166,7 +173,7 @@ export default function FreelancePerformanceMarketer() {
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
           <div>
             {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="hero-fade flex text-xs md:text-sm font-semibold tracking-wide text-gray-500 mb-8 font-mono uppercase">
+            <nav aria-label="Breadcrumb" className="flex text-xs md:text-sm font-semibold tracking-wide text-gray-500 mb-8 font-mono uppercase">
               <ol className="flex items-center gap-3" itemScope itemType="https://schema.org/BreadcrumbList">
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                   <Link href="/" className="hover:text-white transition-colors" itemProp="item">
@@ -182,21 +189,21 @@ export default function FreelancePerformanceMarketer() {
               </ol>
             </nav>
 
-            <p className="hero-fade text-[#246ccc] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-4">
+            <p className="text-[#246ccc] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-4">
               ROI-Driven Growth Specialist
             </p>
 
-            <h1 className="hero-fade text-4xl md:text-5xl lg:text-[3.5rem] font-black mb-5 leading-[1.1] text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black mb-5 leading-[1.1] text-white">
               Freelance{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#246ccc] to-[#3a85e0]">
                 Performance Marketer
               </span>
             </h1>
 
-            <p className="hero-fade text-base md:text-lg text-gray-300 font-medium mb-4 max-w-xl leading-relaxed">
+            <p className="text-base md:text-lg text-gray-300 font-medium mb-4 max-w-xl leading-relaxed">
               Scale Your Business with a Freelance Performance Marketer Who Delivers Results
             </p>
-            <p className="hero-fade text-sm md:text-base text-gray-400 mb-8 max-w-xl leading-relaxed">
+            <p className="text-sm md:text-base text-gray-400 mb-8 max-w-xl leading-relaxed">
               I specialize in data-driven performance marketing strategies that generate leads, reduce cost per
               acquisition, and maximize ROI through{" "}
               <strong className="text-white">Meta Ads (Facebook &amp; Instagram)</strong>. Whether you&apos;re a startup, local
@@ -204,7 +211,7 @@ export default function FreelancePerformanceMarketer() {
             </p>
 
             {/* USPs */}
-            <div className="hero-fade space-y-3 mb-10 max-w-xl">
+            <div className="space-y-3 mb-10 max-w-xl">
               {[
                 "ROI-focused campaigns (not vanity metrics)",
                 "Deep understanding of buyer psychology + funnel optimization",
@@ -220,7 +227,7 @@ export default function FreelancePerformanceMarketer() {
             </div>
 
             {/* CTA */}
-            <div className="hero-fade flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 md:gap-8">
               <a
                 href="#contact"
                 id="perf-hero-cta"
@@ -245,7 +252,7 @@ export default function FreelancePerformanceMarketer() {
             </div>
 
             {/* Location strip */}
-            <div className="hero-fade flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 py-5 border-y border-white/5">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-10 py-5 border-y border-white/5">
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
                 <Globe className="w-3.5 h-3.5 text-[#246ccc]" /> Serving:
               </span>
@@ -265,13 +272,13 @@ export default function FreelancePerformanceMarketer() {
             <div className="relative w-[312px] h-[422px] sm:w-[384px] sm:h-[520px] lg:w-[480px] lg:h-[650px] mx-auto">
               <div className="absolute top-0 left-0 w-[480px] h-[650px] scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-top-left">
                 <div className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-[#246ccc]/30 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-10 transition-all duration-500 hover:z-50 hover:scale-[1.02]" style={{ top: "0px", left: "20px", transform: "rotate(3deg)", transformOrigin: "center" }}>
-                  <img src="/assets/ab test screen short of interior design company.png" alt="A/B testing results for interior design Meta ad campaign showing winning creative variation with 95% confidence level" className="w-full h-full object-cover object-top" loading="eager" />
+                  <Image src="/assets/ab test screen short of interior design company.png" alt="A/B testing results for interior design Meta ad campaign showing winning creative variation with 95% confidence level" width={460} height={260} sizes="(max-width: 768px) 312px, 460px" quality={80} priority className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-20 transition-all duration-500 hover:z-50 hover:scale-[1.02]" style={{ top: "130px", left: "-10px", transform: "rotate(-2deg)", transformOrigin: "center" }}>
-                  <img src="/assets/14 cpr result of performance marketing of wall decor company.png" alt="Rs.14 cost per result Meta ad campaign result for wall decor brand with 180+ messaging conversations" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image src="/assets/14 cpr result of performance marketing of wall decor company.png" alt="Rs.14 cost per result Meta ad campaign result for wall decor brand with 180+ messaging conversations" width={460} height={260} sizes="(max-width: 768px) 312px, 460px" quality={80} className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="hero-img-card absolute w-[460px] h-[260px] rounded-xl overflow-hidden cursor-pointer border border-white/10 bg-[#0a0a0a] shadow-[0_15px_50px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 hover:z-50 hover:scale-[1.02]" style={{ top: "260px", left: "15px", transform: "rotate(4deg)", transformOrigin: "center" }}>
-                  <img src="/assets/result screen short of meta ad.png" alt="Meta ads campaign results showing optimized cost per lead and high conversion rate for local business" className="w-full h-full object-cover object-top" loading="lazy" />
+                  <Image src="/assets/result screen short of meta ad.png" alt="Meta ads campaign results showing optimized cost per lead and high conversion rate for local business" width={460} height={260} sizes="(max-width: 768px) 312px, 460px" quality={80} className="w-full h-full object-cover object-top" />
                 </div>
               </div>
             </div>
@@ -346,7 +353,7 @@ export default function FreelancePerformanceMarketer() {
             {/* Case 1 */}
             <div className="case-card rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-[#246ccc]/40 transition-all flex flex-col">
               <div className="relative h-48 overflow-hidden">
-                <img src="/assets/ab test screen short of interior design company.png" alt="A/B testing screenshot showing winning Meta ad creative for interior design company campaign with structured audience segmentation" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" loading="lazy" />
+                <Image src="/assets/ab test screen short of interior design company.png" alt="A/B testing screenshot showing winning Meta ad creative for interior design company campaign with structured audience segmentation" width={400} height={200} sizes="(max-width: 768px) 100vw, 33vw" quality={75} className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <span className="px-3 py-1 bg-[#246ccc] text-white text-xs font-bold rounded-full uppercase tracking-wider">Interior Design</span>
@@ -378,10 +385,10 @@ export default function FreelancePerformanceMarketer() {
                 Rs.14 Cost Per Lead
               </div>
               <div className="relative h-48 overflow-hidden mt-6">
-                <img src="/assets/14 cpr result of performance marketing of wall decor company.png" alt="Meta ads dashboard showing Rs.14 cost per result for wall decor brand click-to-WhatsApp campaign with 180+ conversations" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" loading="lazy" />
+                <Image src="/assets/14 cpr result of performance marketing of wall decor company.png" alt="Meta ads dashboard showing Rs.14 cost per result for wall decor brand click-to-WhatsApp campaign with 180+ conversations" width={400} height={200} sizes="(max-width: 768px) 100vw, 33vw" quality={75} className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                  <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wider">Wall Decor Brand</span>
+                  <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-wider">Wall Decor Brand</span>
                 </div>
               </div>
               <div className="p-7 flex flex-col flex-grow">
@@ -417,7 +424,7 @@ export default function FreelancePerformanceMarketer() {
             {/* Case 3 */}
             <div className="case-card rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-[#246ccc]/40 transition-all flex flex-col">
               <div className="relative h-48 overflow-hidden">
-                <img src="/assets/performance marketing screen.png" alt="Multi-location Meta ads campaign performance dashboard for resort targeting Tamil Nadu, Bangalore and Mysore audiences" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" loading="lazy" />
+                <Image src="/assets/performance marketing screen.png" alt="Multi-location Meta ads campaign performance dashboard for resort targeting Tamil Nadu, Bangalore and Mysore audiences" width={400} height={200} sizes="(max-width: 768px) 100vw, 33vw" quality={75} className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <span className="px-3 py-1 bg-[#246ccc] text-white text-xs font-bold rounded-full uppercase tracking-wider">Resort &amp; Hospitality</span>
@@ -484,7 +491,7 @@ export default function FreelancePerformanceMarketer() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <img src="/assets/performance marketing.png" alt="Performance marketing Meta ads dashboard showing campaign metrics, cost optimization and conversion tracking for freelance marketing campaigns" className="w-full h-full object-cover" loading="lazy" />
+              <Image src="/assets/performance marketing.png" alt="Performance marketing Meta ads dashboard showing campaign metrics, cost optimization and conversion tracking for freelance marketing campaigns" width={600} height={400} sizes="(max-width: 768px) 100vw, 50vw" quality={75} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
