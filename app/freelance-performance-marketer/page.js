@@ -1,10 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   CheckCircle2,
   TrendingUp,
@@ -12,7 +7,6 @@ import {
   BarChart3,
   ArrowRight,
   Star,
-  ChevronDown,
   MapPin,
   Zap,
   Users,
@@ -22,67 +16,11 @@ import {
   Globe,
 } from "lucide-react";
 import Footer from "../component/Footer";
-
-gsap.registerPlugin(ScrollTrigger);
+import FAQItem from "./FAQItem";
+import PerformanceContactForm from "./PerformanceContactForm";
+import PerformanceAnimations from "./PerformanceAnimations";
 
 export default function FreelancePerformanceMarketer() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    let ctx;
-    const timer = setTimeout(() => {
-      ctx = gsap.context(() => {
-        gsap.from(".hero-fade", {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-        });
-
-        gsap.fromTo(
-          ".hero-img-card",
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power3.out" }
-        );
-
-        gsap.utils.toArray(".reveal-section").forEach((section) => {
-          gsap.fromTo(
-            section,
-            { y: 44, opacity: 0 },
-            {
-              scrollTrigger: { trigger: section, start: "top 88%", toggleActions: "play none none none" },
-              y: 0, opacity: 1, duration: 0.9, ease: "power3.out",
-            }
-          );
-        });
-
-        gsap.fromTo(
-          ".service-card",
-          { y: 30, opacity: 0 },
-          {
-            scrollTrigger: { trigger: ".services-grid", start: "top 90%", toggleActions: "play none none none" },
-            y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: "power3.out",
-          }
-        );
-
-        gsap.fromTo(
-          ".case-card",
-          { y: 30, opacity: 0 },
-          {
-            scrollTrigger: { trigger: ".cases-grid", start: "top 88%", toggleActions: "play none none none" },
-            y: 0, opacity: 1, duration: 0.75, stagger: 0.12, ease: "power3.out",
-          }
-        );
-      }, containerRef);
-    }, 50);
-
-    return () => {
-      clearTimeout(timer);
-      if (ctx) ctx.revert();
-    };
-  }, []);
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -158,7 +96,7 @@ export default function FreelancePerformanceMarketer() {
   };
 
   return (
-    <main ref={containerRef} className="relative text-white">
+    <main className="relative text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -644,63 +582,12 @@ export default function FreelancePerformanceMarketer() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-2xl">
-            <h3 className="text-2xl font-bold mb-8">Start Your Campaign</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="pm-name" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                  <input id="pm-name" type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#246ccc]/50 transition-colors text-white" />
-                </div>
-                <div>
-                  <label htmlFor="pm-email" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                  <input id="pm-email" type="email" placeholder="your@email.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#246ccc]/50 transition-colors text-white" />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="pm-service" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Service Needed</label>
-                <select id="pm-service" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#246ccc]/50 transition-colors appearance-none text-white">
-                  <option className="bg-black">Select a service</option>
-                  <option className="bg-black">Meta Ads Strategy &amp; Execution</option>
-                  <option className="bg-black">Lead Generation Campaigns</option>
-                  <option className="bg-black">WhatsApp &amp; Messaging Campaigns</option>
-                  <option className="bg-black">Retargeting &amp; Funnel Optimization</option>
-                  <option className="bg-black">A/B Testing &amp; Scaling</option>
-                  <option className="bg-black">Performance Audit &amp; Consultation</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="pm-message" className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Message</label>
-                <textarea id="pm-message" rows="4" placeholder="Tell me about your business goals and current ad spend..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#246ccc]/50 transition-colors text-white" />
-              </div>
-              <button type="submit" id="pm-submit-btn" className="w-full py-5 bg-[#246ccc] hover:bg-[#3a85e0] text-white font-black rounded-xl text-xl uppercase tracking-tighter transition-all shadow-[0_10px_30px_rgba(36,108,204,0.3)] flex items-center justify-center gap-3 group">
-                Send Message <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
+          <PerformanceContactForm />
         </div>
       </section>
 
       <Footer />
+      <PerformanceAnimations />
     </main>
-  );
-}
-
-function FAQItem({ q, a }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className={`border rounded-2xl bg-white transition-all mb-3 shadow-sm ${open ? "border-[#246ccc]/50" : "border-gray-200 hover:border-[#246ccc]/30"}`}>
-      <button className="flex justify-between items-center p-6 cursor-pointer w-full text-left" onClick={() => setOpen(!open)} aria-expanded={open}>
-        <h3 className="text-lg font-semibold text-gray-900 pr-4">{q}</h3>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${open ? "bg-[#246ccc] text-white" : "bg-gray-100"}`}>
-          <ChevronDown className={`w-5 h-5 transition-transform ${open ? "rotate-180" : ""}`} />
-        </div>
-      </button>
-      {open && (
-        <div className="px-6 pb-6 pt-0">
-          <p className="text-gray-600 leading-relaxed text-base">{a}</p>
-        </div>
-      )}
-    </div>
   );
 }

@@ -1,0 +1,69 @@
+"use client";
+
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function PerformanceAnimations() {
+    useEffect(() => {
+        let ctx;
+        const timer = setTimeout(() => {
+            ctx = gsap.context(() => {
+                gsap.fromTo(
+                    ".hero-img-card",
+                    { y: 24, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.85, stagger: 0.1, ease: "power3.out" }
+                );
+
+                gsap.utils.toArray(".reveal-section").forEach((section) => {
+                    gsap.fromTo(
+                        section,
+                        { y: 44, opacity: 0 },
+                        {
+                            scrollTrigger: { trigger: section, start: "top 88%", toggleActions: "play none none none" },
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.9,
+                            ease: "power3.out",
+                        }
+                    );
+                });
+
+                gsap.fromTo(
+                    ".service-card",
+                    { y: 30, opacity: 0 },
+                    {
+                        scrollTrigger: { trigger: ".services-grid", start: "top 90%", toggleActions: "play none none none" },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.7,
+                        stagger: 0.1,
+                        ease: "power3.out",
+                    }
+                );
+
+                gsap.fromTo(
+                    ".case-card",
+                    { y: 30, opacity: 0 },
+                    {
+                        scrollTrigger: { trigger: ".cases-grid", start: "top 88%", toggleActions: "play none none none" },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.75,
+                        stagger: 0.12,
+                        ease: "power3.out",
+                    }
+                );
+            });
+        }, 100);
+
+        return () => {
+            clearTimeout(timer);
+            if (ctx) ctx.revert();
+        };
+    }, []);
+
+    return null;
+}

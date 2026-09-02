@@ -15,7 +15,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: false,
 });
 
 const bebasNeue = Bebas_Neue({
@@ -23,7 +22,6 @@ const bebasNeue = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
-  preload: false,
 });
 
 import { siteConfig } from "@/content/config";
