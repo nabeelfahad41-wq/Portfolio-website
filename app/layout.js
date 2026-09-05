@@ -2,7 +2,7 @@ import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import GlobalBackground from "./component/GlobalBackground";
 import Navbar from "./component/Navbar";
-import WhatsAppChat from "./component/WhatsAppChat";
+import LazyWhatsAppChat from "./component/LazyWhatsAppChat";
 import ScrollRefresh from "./component/ScrollRefresh";
 
 const geistSans = Geist({
@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <ScrollRefresh />
         <div>{children}</div>
-        <WhatsAppChat />
+        <LazyWhatsAppChat />
       </body>
     </html>
   );
