@@ -82,26 +82,26 @@ const components = {
             if (!value) return null;
             let imageUrl = null;
             try {
-                imageUrl = value?.asset ? urlForImage(value)?.url() : value?.url;
+                imageUrl = value?.asset ? urlForImage(value)?.width(800).url() : value?.url;
             } catch (e) {
                 imageUrl = value?.url || null;
             }
             if (!imageUrl) return null;
             return (
-                <figure className="my-10 overflow-hidden rounded-2xl shadow-xl border border-white/10 bg-white/5">
-                    <div className="relative w-full h-[320px] sm:h-[420px] md:h-[500px]">
+                <figure className="my-8 sm:my-10 overflow-hidden rounded-2xl shadow-xl border border-white/10 bg-white/5">
+                    <div className="relative w-full aspect-[16/9] max-h-[500px]">
                         <Image
                             src={imageUrl}
                             alt={value.alt || 'Blog article illustration'}
                             fill
                             loading="lazy"
                             sizes="(max-width: 768px) 100vw, 768px"
-                            quality={80}
-                            className="object-cover"
+                            quality={75}
+                            className="object-cover rounded-2xl"
                         />
                     </div>
                     {value.caption && (
-                        <figcaption className="text-center text-sm text-gray-300 mt-3 italic px-4 py-1">
+                        <figcaption className="text-center text-sm text-gray-300 mt-2.5 italic px-4 py-1">
                             {value.caption}
                         </figcaption>
                     )}

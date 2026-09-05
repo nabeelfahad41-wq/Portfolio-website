@@ -11,6 +11,9 @@ export default function ScrollRefresh() {
 
       const runRefresh = async () => {
         try {
+          const hasGsapElements = typeof document !== 'undefined' && !!document.querySelector('[data-gsap], .gsap-target, [class*="gsap-"]');
+          if (!hasGsapElements) return;
+
           const { gsap } = await import("gsap");
           const { ScrollTrigger } = await import("gsap/ScrollTrigger");
           if (isCancelled) return;
