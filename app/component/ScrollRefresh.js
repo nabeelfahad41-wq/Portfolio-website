@@ -1,30 +1,41 @@
 "use client";
 
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ScrollRefresh() {
   useEffect(() => {
-    try {
-      const scheduleRefresh = () => {
-        const triggers = ScrollTrigger.getAll();
-        console.log("[ScrollRefresh] active ScrollTriggers:", triggers.length);
-        ScrollTrigger.refresh(true);
+    let isCancelled = false;
+
+    const scheduleRefresh = () => {
+      if (typeof window === "undefined" || isCancelled) return;
+
+      const runRefresh = async () => {
+        try {
+          const { gsap } = await import("gsap");
+          const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+          if (isCancelled) return;
+          gsap.registerPlugin(ScrollTrigger);
+          const triggers = ScrollTrigger.getAll();
+          if (triggers.length > 0) {
+            ScrollTrigger.refresh(true);
+          }
+        } catch (e) {
+          console.warn('ScrollRefresh failed', e);
+        }
       };
 
-      if (typeof window !== "undefined") {
-        if ("requestIdleCallback" in window) {
-          window.requestIdleCallback(scheduleRefresh, { timeout: 2000 });
-        } else {
-          setTimeout(scheduleRefresh, 200);
-        }
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(runRefresh, { timeout: 3000 });
+      } else {
+        setTimeout(runRefresh, 1000);
       }
-    } catch (e) {
-      console.warn('ScrollRefresh failed', e);
-    }
+    };
+
+    scheduleRefresh();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   return null;

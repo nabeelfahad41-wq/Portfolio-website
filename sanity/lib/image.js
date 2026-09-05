@@ -9,7 +9,7 @@ const imageBuilder = createImageUrlBuilder({
 export const urlForImage = (source) => {
     if (!source || !source.asset) return null;
     try {
-        return imageBuilder.image(source);
+        return imageBuilder.image(source).auto('format').quality(75);
     } catch (e) {
         console.warn('Sanity urlForImage error:', e?.message);
         return null;

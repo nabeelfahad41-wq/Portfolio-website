@@ -1,5 +1,3 @@
-"use client";
-
 export default function GlobalBackground() {
   return (
     <div className="fixed inset-0 w-full h-full z-[-1] overflow-hidden bg-[linear-gradient(90deg,#000000,#737373)] font-sans">

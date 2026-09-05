@@ -2,8 +2,10 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  compress: true,
+  poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ['lucide-react', 'gsap'],
+    optimizePackageImports: ['lucide-react', 'gsap', '@portabletext/react'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],

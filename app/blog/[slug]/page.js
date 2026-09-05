@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }) {
             : post.mainImage?.url || `${siteConfig.metadata.baseUrl}/icon.png`;
 
     const mainImageSrc = post.mainImage?.asset
-        ? urlForImage(post.mainImage)?.url()
+        ? urlForImage(post.mainImage)?.width(1200).url()
         : post.mainImage?.url || '/assets/hero-portrait.webp';
 
     const formattedDate = post.publishedAt
