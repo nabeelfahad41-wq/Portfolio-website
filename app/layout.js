@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import GlobalBackground from "./component/GlobalBackground";
@@ -65,6 +66,19 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} bg-black`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YYNMXSX7RW"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YYNMXSX7RW');
+          `}
+        </Script>
         <GlobalBackground />
         <Navbar />
         <ScrollRefresh />
